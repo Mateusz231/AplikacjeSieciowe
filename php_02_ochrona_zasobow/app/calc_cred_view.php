@@ -12,7 +12,13 @@
 <div style="width:90%; margin: 2em auto;">
 	<a href="<?php print(_APP_ROOT); ?>/app/inna_chroniona.php" class="pure-button">kolejna chroniona strona</a>
 	<a href="<?php print(_APP_ROOT); ?>/app/security/logout.php" class="pure-button pure-button-active">Wyloguj</a>
+  <?php
 
+  if(isset($role) && $role=='admin'){
+    echo '<a href="' . _APP_ROOT . 'app/admin_page.php" class="pure-button">Admin</a>';
+  }
+
+  ?>
 
 
 
