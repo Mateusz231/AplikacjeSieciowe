@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
+    <?php
+    require_once dirname(__FILE__).'/../config.php';
+    include _ROOT_PATH.'/app/security/check.php';
+    ?>
     <style>
         .board {
             display: grid;
@@ -28,6 +32,8 @@
     </style>
 </head>
 <body>
+
+
     <div class="board">
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
