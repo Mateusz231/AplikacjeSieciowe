@@ -9,7 +9,7 @@
 		<title>Kalkulator kredytowy</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{$app_url}/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -22,7 +22,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<a href="{$app_url}/index.php" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -33,36 +33,32 @@
 								</header>
 
 				
-							
+						{block name=content} Domyślna treść zawartości .... {/block}
+
+
+
+						{block name=result}							
+						Default value
+						{/block}	
+
 
 						</div>
 					</div>
 
 				<!-- Sidebar -->
 					<div id="sidebar">
+						
 						<div class="inner">
 
-							<!-- Search -->
-							
-
 							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-							
-											
-									</ul>
-								</nav>
 
+								{block name=sidebar} abc {/block}
+								
 							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
+								
 
 						</div>
 					</div>
@@ -70,11 +66,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="{$app_url}/assets/js/jquery.min.js"></script>
+			<script src="{$app_url}/assets/js/browser.min.js"></script>
+			<script src="{$app_url}/assets/js/breakpoints.min.js"></script>
+			<script src="{$app_url}/assets/js/util.js"></script>
+			<script src="{$app_url}/assets/js/main.js"></script>
 
 	</body>
 </html>

@@ -1,47 +1,57 @@
 {extends file="../templates/main.tpl"}
 
-<html>
-    <head>
-    <meta charset="UTF-8"/>
-    <title>Kalkulator kredytowy</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">    
-    </head>
 
-   <body>
+{block name=sidebar}
+<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="generic.html">Generic</a></li>
+										<li><a href="elements.html">Elements</a></li>
+							
+											
+									</ul>
+								</nav>
+{/block}
 
-    
-<div style="width:90%; margin: 2em auto;">
-	<a href="<?php print(_APP_ROOT); ?>/app/inna_chroniona.php" class="pure-button">kolejna chroniona strona</a>
-	<a href="<?php print(_APP_ROOT); ?>/app/security/logout.php" class="pure-button pure-button-active">Wyloguj</a>
-  <?php
-
-  if(isset($role) && $role=='admin'){
-    echo '<a href="' . _APP_ROOT . 'app/admin_page.php" class="pure-button">Admin</a>';
-  }
-
-  ?>
+{block name="content"}
 
 
 
+<form method="post" action="{$app_url}/app/calc_cred.php">
+								<div class="row gtr-uniform">
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="zl" id="demo-name" value="{$form['kredyt']}" placeholder="Kredyt" />
+									</div>
+								</br>
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="rok" id="demo-email" value="{$form['rok']}" placeholder="Ile lat" />
+									</div>
 
-  <form action="<?php print(_APP_ROOT); ?>/app/calc_cred.php" method="post" class="pure-form pure-form-stacked">
-	<legend>Kalkulator</legend>
-	<fieldset>
-		<label for="zl1">Kwota na jaka kredyt: </label>
-		<input id="zl1" type="text" name="zl" value="<?php out($form['kredyt']) ?>" />
-		
-		<label for="rok1">Na ile lat: </label>
-		<input id="rok1" type="text" name="rok" value="<?php out($form['rok']) ?>" />
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="op" id="demo-email" value="{$form['oprocentowanie']}" placeholder="Oprocentowanie" />
+									</div>
 
-        <label for="op1">Oprocentowanie: </label>
-		<input id="op1" type="text" name="op" value="<?php out($form['oprocentowanie']) ?>" />
-	</fieldset>	
-	<input type="submit" value="Oblicz" class="pure-button pure-button-primary" />
-</form>	
+								</br>
+									
+
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Oblicz" class="primary" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
 
 
+{/block}
 
-{* wyświeltenie listy błędów, jeśli istnieją *}
+
+{block name=result}
+<section>
+	{* wyświeltenie listy błędów, jeśli istnieją *}
 {if isset($messages)}
 	{if count($messages) > 0} 
 		<h4>Wystąpiły błędy: </h4>
@@ -56,12 +66,11 @@
 {/if}
 
 
-
 {* wyświeltenie listy informacji, jeśli istnieją *}
 {if isset($infos)}
 	{if count($infos) > 0} 
 		<h4>Informacje: </h4>
-		<ol class="inf">
+		<ol>
 		{foreach  $infos as $msg}
 		{strip}
 			<li>{$msg}</li>
@@ -73,13 +82,13 @@
 
 {if isset($result)}
 	<h4>Wynik</h4>
-	<p class="res">
+	<p>
 	{$result}
 	</p>
 {/if}
     
 
-</div>
+</section>
 
-   </body> 
-</html>
+{/block}
+

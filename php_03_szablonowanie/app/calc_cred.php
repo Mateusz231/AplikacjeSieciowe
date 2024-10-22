@@ -78,8 +78,8 @@ $result = null;
 
 //pobierz parametry i wykonaj zadanie jeśli wszystko w porządku
 getParams($form);
-if ( validate($form,$infos,$messages) ) { // gdy brak błędów
-	process($form,$infos,$messages,$result);
+if ( validate($form,$infos,$msgs) ) { // gdy brak błędów
+	process($form,$infos,$msgs,$result);
 }
 
 $smarty = new Smarty();
@@ -95,7 +95,7 @@ $smarty->assign('page_header','Szablony Smarty');
 //pozostałe zmienne niekoniecznie muszą istnieć, dlatego sprawdzamy aby nie otrzymać ostrzeżenia
 $smarty->assign('form',$form);
 $smarty->assign('result',$result);
-$smarty->assign('messages',$messages);
+$smarty->assign('messages',$msgs);
 $smarty->assign('infos',$infos);
 
 // 5. Wywołanie szablonu
