@@ -86,10 +86,10 @@ $smarty = new Smarty();
 
 $smarty->assign('app_url',_APP_URL);
 $smarty->assign('root_path',_ROOT_PATH);
-$smarty->assign('page_title','Przykład 04');
+$smarty->assign('page_title','Kalkulator kredytowy');
 $smarty->assign('page_description','Profesjonalne szablonowanie oparte na bibliotece Smarty');
-$smarty->assign('page_header','Szablony Smarty');
-
+$smarty->assign('page_header','Kalkulator kredytowy');
+$smarty->registerPlugin("modifier", "count", "count");
 
 
 //pozostałe zmienne niekoniecznie muszą istnieć, dlatego sprawdzamy aby nie otrzymać ostrzeżenia

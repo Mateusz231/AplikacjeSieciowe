@@ -1,17 +1,20 @@
 {extends file="../templates/main.tpl"}
 
 
+{block name=header}
+<p>{$page_header}</p>
+{/block}
+
+
 {block name=sidebar}
 <nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-							
-											
+										<li><a href="{$app_url}">Strona główna </a></li>
+
+																	
 									</ul>
 								</nav>
 {/block}
@@ -50,10 +53,13 @@
 
 
 {block name=result}
+
 <section>
 	{* wyświeltenie listy błędów, jeśli istnieją *}
 {if isset($messages)}
+
 	{if count($messages) > 0} 
+	<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(255,0,0); border-radius: 1em; color: rgb(0,0,0);" >
 		<h4>Wystąpiły błędy: </h4>
 		<ol class="err">
 		{foreach  $messages as $msg}
@@ -61,32 +67,45 @@
 			<li>{$msg}</li>
 		{/strip}
 		{/foreach}
+
 		</ol>
+		</div>	
 	{/if}
+
+
 {/if}
+
 
 
 {* wyświeltenie listy informacji, jeśli istnieją *}
 {if isset($infos)}
+
 	{if count($infos) > 0} 
+	<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(255,255,0); border-radius: 1em; color: rgb(0,0,0);" >
 		<h4>Informacje: </h4>
-		<ol>
+		<ol >
 		{foreach  $infos as $msg}
 		{strip}
 			<li>{$msg}</li>
 		{/strip}
 		{/foreach}
 		</ol>
+			</div> 
 	{/if}
+
 {/if}
+ 
+
 
 {if isset($result)}
+<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(0,255,0); border-radius: 1em; color: rgb(0,0,0);" >
 	<h4>Wynik</h4>
-	<p>
+	<p style="color: rgb(0,0,0);">
 	{$result}
 	</p>
+	</div> 
 {/if}
-    
+   
 
 </section>
 
