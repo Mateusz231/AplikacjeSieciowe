@@ -2,15 +2,9 @@
 require_once dirname(__FILE__).'/../../config.php';
 
 require_once _ROOT_PATH.'/lib/smarty/Smarty.class.php';
-$smarty = new Smarty();
-$smarty->assign('app_url',_APP_URL);
-$smarty->assign('root_path',_ROOT_PATH);
-$smarty->assign('page_title','Zaloguj sie');
-$smarty->assign('page_header','Logowanie');
-$smarty->registerPlugin("modifier", "count", "count");
 
 
-//pozostałe zmienne niekoniecznie muszą istnieć, dlatego sprawdzamy aby nie otrzymać ostrzeżenia
+
 
 
 //pobranie parametrów
@@ -20,7 +14,7 @@ function getParamsLogin(&$form){
 }
 
 //walidacja parametrów z przygotowaniem zmiennych dla widoku
-function validateLogin(&$form,&$messages){
+function validateLogin(&$form,&$msgs){
 	// sprawdzenie, czy parametry zostały przekazane
 	if ( ! (isset($form['login']) && isset($form['pass']))) {
 		//sytuacja wystąpi kiedy np. kontroler zostanie wywołany bezpośrednio - nie z formularza
@@ -29,14 +23,14 @@ function validateLogin(&$form,&$messages){
 
 	// sprawdzenie, czy potrzebne wartości zostały przekazane
 	if ( $form['login'] == "") {
-		$messages [] = 'Nie podano loginu';
+		$msgs [] = 'Nie podano loginu';
 	}
 	if ( $form['pass'] == "") {
-		$messages [] = 'Nie podano hasła';
+		$msgs [] = 'Nie podano hasła';
 	}
 
 	//nie ma sensu walidować dalej, gdy brak parametrów
-	if (count ( $messages ) > 0) return false;
+	if (count ( $msgs ) > 0) return false;
 
 	// sprawdzenie, czy dane logowania są poprawne
 	// - takie informacje najczęściej przechowuje się w bazie danych
@@ -52,13 +46,13 @@ function validateLogin(&$form,&$messages){
 		return true;
 	}
 	
-	$messages [] = 'Niepoprawny login lub hasło';
+	$msgs [] = 'Niepoprawny login lub hasło';
 	return false; 
 }
 
 //inicjacja potrzebnych zmiennych
-$form = array();
-$messages = array();
+$form = null;
+$msgs = array();
 
 
 
@@ -66,12 +60,21 @@ $messages = array();
 // pobierz parametry i podejmij akcję
 getParamsLogin($form);
 
+$smarty = new Smarty();
+$smarty->assign('app_url',_APP_URL);
+$smarty->assign('root_path',_ROOT_PATH);
+$smarty->assign('page_title','Zaloguj sie');
+$smarty->assign('page_header','Logowanie');
+$smarty->registerPlugin("modifier", "count", "count");
+
+
 $smarty->assign('form',$form);
-$smarty->assign('messages',$messages);
 
 
-if (!validateLogin($form,$messages)) {
-	//jeśli błąd logowania to wyświetl formularz z tekstami z $messages
+if (!validateLogin($form,$msgs)) {
+	//jeśli błąd logowania to wyświetl formularz z tekstami z $msgs
+    $smarty->assign('messages',$msgs);
+
 	$smarty->display(_ROOT_PATH.'/app/security/login_view.tpl');
 } else { 
 	//ok przekieruj lub "forward" na stronę główną

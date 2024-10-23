@@ -29,16 +29,17 @@
 										</ul>
 									</div>
 								</div>
-							</form>
+</form>
 
 
 {/block}
 
 
-<section>
+
 {block name=result}
 
-{* wyświeltenie listy błędów, jeśli istnieją *}
+<section>
+	{* wyświeltenie listy błędów, jeśli istnieją *}
 {if isset($messages)}
 
 	{if count($messages) > 0} 
@@ -59,9 +60,10 @@
 {/if}
 
 
-{/block}
-
 
 </section>
+
+{/block}
+
 
 
