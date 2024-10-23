@@ -14,9 +14,18 @@
 									<ul>
 										<li><a href="{$app_url}">Strona główna </a></li>
 
+								
+
+									<li><a href="{$app_url}/app/security/logout.php">Wyloguj</a></li>
+
+									
+	
 																	
 									</ul>
 								</nav>
+
+
+
 {/block}
 
 {block name="content"}

@@ -1,0 +1,67 @@
+{extends file="../../templates/main.tpl"}
+
+{block name=header}
+<p>{$page_header}</p>
+{/block}
+
+{block name="content"}
+
+
+
+
+<form method="post" action="{$app_url}/app/security/login.php">
+								<div class="row gtr-uniform">
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="login" id="demo-name" value="{$form['login']}" placeholder="Login" />
+									</div>
+								</br>
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="pass" id="demo-email" value="{$form['pass']}" placeholder="Password" />
+									</div>
+
+
+								</br>
+									
+
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Zaloguj" class="primary" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+
+
+{/block}
+
+
+<section>
+{block name=result}
+
+{* wyświeltenie listy błędów, jeśli istnieją *}
+{if isset($messages)}
+
+	{if count($messages) > 0} 
+	<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(255,0,0); border-radius: 1em; color: rgb(0,0,0);" >
+		<h4>Wystąpiły błędy: </h4>
+		<ol class="err">
+		{foreach  $messages as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+
+		</ol>
+		</div>	
+	{/if}
+
+
+{/if}
+
+
+{/block}
+
+
+</section>
+
+

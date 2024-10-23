@@ -54,7 +54,7 @@
 
 							<!-- Menu -->
 
-								{block name=sidebar} abc {/block}
+								{block name=sidebar}{/block}
 								
 							<!-- Footer -->
 								<footer id="footer">
