@@ -18,7 +18,10 @@
 
 									<li><a href="{$app_url}/app/security/logout.php">Wyloguj</a></li>
 
-									
+									{if $role eq 'admin'}
+
+									<li><a href="{$app_url}/app/admin_page.php">Admin page</a></li>
+									{/if}
 	
 																	
 									</ul>

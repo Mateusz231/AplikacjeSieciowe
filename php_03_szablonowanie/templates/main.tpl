@@ -40,7 +40,7 @@
 
 
 						{block name=result}							
-						Default value
+						
 						{/block}	
 
 

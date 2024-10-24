@@ -71,10 +71,10 @@ $smarty->registerPlugin("modifier", "count", "count");
 $smarty->assign('form',$form);
 
 
+
 if (!validateLogin($form,$msgs)) {
 	//jeśli błąd logowania to wyświetl formularz z tekstami z $msgs
     $smarty->assign('messages',$msgs);
-
 	$smarty->display(_ROOT_PATH.'/app/security/login_view.tpl');
 } else { 
 	//ok przekieruj lub "forward" na stronę główną
