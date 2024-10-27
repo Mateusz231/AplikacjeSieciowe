@@ -9,14 +9,14 @@
 
 
 
-<form method="post" action="{$app_url}/app/security/login.php">
+<form method="post" action="{$conf->app_url}/app/security/login.php">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="login" id="demo-name" value="{$form['login']}" placeholder="Login" />
+										<input type="text" name="login" id="demo-name" value="" placeholder="Login" />
 									</div>
 								</br>
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="pass" id="demo-email" value="{$form['pass']}" placeholder="Password" />
+										<input type="text" name="pass" id="demo-email" value="" placeholder="Password" />
 									</div>
 
 
@@ -39,26 +39,22 @@
 {block name=result}
 
 <section>
-	{* wyświeltenie listy błędów, jeśli istnieją *}
-{if isset($messages)}
-
-	{if count($messages) > 0} 
+{if $messages->isError()} 
 	<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(255,0,0); border-radius: 1em; color: rgb(0,0,0);" >
 		<h4>Wystąpiły błędy: </h4>
 		<ol class="err">
-		{foreach  $messages as $msg}
+		{foreach  $messages->getErrors() as $err}
 		{strip}
-			<li>{$msg}</li>
+			<li>{$err}</li>
 		{/strip}
 		{/foreach}
 
 		</ol>
 		</div>	
-	{/if}
+
 
 
 {/if}
-
 
 
 </section>

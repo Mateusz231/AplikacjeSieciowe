@@ -2,7 +2,7 @@
 
 
 
-class CalcMessages(){
+class CalcMessages{
 
 
     private $infos = array();

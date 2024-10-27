@@ -1,10 +1,10 @@
 <?php
 
 
-require_once $conf->root_path.'lib/smarty/Smarty.class.php';
-require_once $conf->root_path.'lib/CalcMessagesClass.php';
-require_once $conf->root_path.'lib/CalcFormClass.php';
-require_once $conf->root_path.'lib/CalcResultClass.php';
+require_once $conf->root_path.'/lib/smarty/Smarty.class.php';
+require_once $conf->root_path.'/lib/CalcMessagesClass.php';
+require_once $conf->root_path.'/lib/CalcFormClass.php';
+require_once $conf->root_path.'/lib/CalcResultClass.php';
 
 
 class CalcCred{
@@ -24,6 +24,8 @@ class CalcCred{
     $this->form = new CalcForm();
     $this->result = new CalcResult();    
 
+    $this->msgs->clear();
+
     }
 
 
@@ -33,17 +35,17 @@ class CalcCred{
         $this->form->kredyt = isset($_REQUEST['zl']) ? $_REQUEST['zl'] : null;
         $this->form->rok = isset($_REQUEST['rok']) ? $_REQUEST['rok'] : null;
         $this->form->oprocentowanie = isset($_REQUEST['op']) ? $_REQUEST['op'] : null;
+       
     }
 
 
 
     public function validate(){
-            // sprawdzenie, czy parametry zostały przekazane
+
             if ( ! (isset($this->form->kredyt) && isset($this->form->rok) && isset($this->form->oprocentowanie) ))	return false;
         
         
             $infos [] = 'Przekazano parametry.';	
-            // sprawdzenie, czy potrzebne wartości zostały przekazane
             if ( $this->form->kredyt == "") {
                
                 $this->msgs->addError('Nie podano kredytu');
@@ -55,18 +57,15 @@ class CalcCred{
             if ( $this->form->rok == "") {
                 $this->msgs->addError('Nie podano na ile lat');
             }
-        
-        
-            //nie ma sensu walidować dalej gdy brak parametrów
-      
+
             if(! $this->msgs->isError()){
 
                 if (! is_numeric( $this->form->kredyt )) {
-                    $this->msgs->addError('Kredyt nie jest liczbą całkowitą');
+                    $this->msgs->addError('Kredyt nie jest liczbą rzeczywistą');
                 }
                 
                 if (! is_numeric( $this->form->oprocentowanie)) {
-                    $this->msgs->addError('Oprocentowanie nie jest liczbą całkowitą');
+                    $this->msgs->addError('Oprocentowanie nie jest liczbą rzeczywistą');
                 }	
             
                 if (! is_numeric( $this->form->rok)) {
@@ -85,20 +84,16 @@ class CalcCred{
 
 
         $this->getParams();
-
+       
         if($this->validate()){
 
 
+            
             $this->form->kredyt = floatval($this->form->kredyt);
             $this->form->oprocentowanie = floatval($this->form->oprocentowanie);
             $this->form->rok = intval($this->form->rok);
 
             $this->msgs->addInfo('Parametry poprawne');
-
-
-            $result = $form['kredyt']/($form['rok']*12);
-            $cross = ($form['oprocentowanie']*$result)/100;
-            $result = round($result+$cross,2);     
 
 
             $this->result->result = $this->form->kredyt/($this->form->rok*12);
@@ -108,12 +103,12 @@ class CalcCred{
 
             $this->msgs->addInfo('Wykonano obliczenia');
 
-            $this->generateView();
+          
 
         }
 
 
-
+        $this->generateView();
 
 
     }
@@ -121,10 +116,14 @@ class CalcCred{
     public function generateView(){
 
 
-        global $conf
+        global $conf;
+        global $role;
+        
+        
 
         $smarty = new Smarty();
         $smarty->assign('conf',$conf);
+        $smarty->assign('role',$role);
         $smarty->assign('page_title','Kalkulator kredytowy');
         $smarty->assign('page_header','Kalkulator kredytowy');
         $smarty->registerPlugin("modifier", "count", "count");
@@ -132,6 +131,7 @@ class CalcCred{
         $smarty->assign('form',$this->form);
         $smarty->assign('result',$this->result);
         $smarty->assign('messages',$this->msgs);
+       
 
         $smarty->display($conf->root_path.'/app/calc_cred_view.tpl');
 

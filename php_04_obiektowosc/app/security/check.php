@@ -1,15 +1,7 @@
 <?php
 require_once dirname(__FILE__).'/../../config.php';
-//inicjacja mechanizmu sesji
-session_start();
+require_once $conf->root_path.'/lib/CheckClass.php';
 
-//pobranie roli
-$role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
 
-//jeśli brak parametru (niezalogowanie) to idź na stronę logowania
-if ( empty($role) ){
-	include _ROOT_PATH.'/app/security/login.php';
-	//zatrzymaj dalsze przetwarzanie skryptów
-	exit();
-}
-//jeśli ok to idź dalej
+$check = new Check ();
+$check->checkIn();

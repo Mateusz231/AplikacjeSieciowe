@@ -12,13 +12,18 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="{$app_url}">Strona główna </a></li>
+										<li><a href="{$conf->app_url}">Strona główna </a></li>
 
 								
 
-									<li><a href="{$app_url}/app/security/logout.php">Wyloguj</a></li>
+									<li><a href="{$conf->app_url}/app/security/logout.php">Wyloguj</a></li>
 
-									
+									{if $role eq 'admin'}
+
+									<li><a href="{$conf->app_url}/app/admin_page.php">Admin page</a></li>
+									{/if}		
+
+										
 	
 																	
 									</ul>
@@ -32,18 +37,18 @@
 
 
 
-<form method="post" action="{$app_url}/app/calc_cred.php">
+<form method="post" action="{$conf->app_url}/app/calc_cred.php">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="zl" id="demo-name" value="{$form['kredyt']}" placeholder="Kredyt" />
+										<input type="text" name="zl" id="demo-name" value="{$form->kredyt}" placeholder="Kredyt" />
 									</div>
 								</br>
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="rok" id="demo-email" value="{$form['rok']}" placeholder="Ile lat" />
+										<input type="text" name="rok" id="demo-email" value="{$form->rok}" placeholder="Ile lat" />
 									</div>
 
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="op" id="demo-email" value="{$form['oprocentowanie']}" placeholder="Oprocentowanie" />
+										<input type="text" name="op" id="demo-email" value="{$form->oprocentowanie}" placeholder="Oprocentowanie" />
 									</div>
 
 								</br>
@@ -65,21 +70,21 @@
 
 <section>
 	{* wyświeltenie listy błędów, jeśli istnieją *}
-{if isset($messages)}
 
-	{if count($messages) > 0} 
+
+	{if $messages->isError()} 
 	<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(255,0,0); border-radius: 1em; color: rgb(0,0,0);" >
 		<h4>Wystąpiły błędy: </h4>
 		<ol class="err">
-		{foreach  $messages as $msg}
+		{foreach  $messages->getErrors() as $err}
 		{strip}
-			<li>{$msg}</li>
+			<li>{$err}</li>
 		{/strip}
 		{/foreach}
 
 		</ol>
 		</div>	
-	{/if}
+
 
 
 {/if}
@@ -87,30 +92,29 @@
 
 
 {* wyświeltenie listy informacji, jeśli istnieją *}
-{if isset($infos)}
 
-	{if count($infos) > 0} 
+
+	{if $messages->isInfo()} 
 	<div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(255,255,0); border-radius: 1em; color: rgb(0,0,0);" >
 		<h4>Informacje: </h4>
 		<ol >
-		{foreach  $infos as $msg}
+		{foreach  $messages->getInfos() as $infos}
 		{strip}
-			<li>{$msg}</li>
+			<li>{$infos}</li>
 		{/strip}
 		{/foreach}
 		</ol>
 			</div> 
 	{/if}
 
-{/if}
  
 
 
-{if isset($result)}
+{if isset($result->result)}
 <div style= "margin: 0.2em; padding: 1em; witdh: 2em; background-color: rgb(0,255,0); border-radius: 1em; color: rgb(0,0,0);" >
 	<h4>Wynik</h4>
 	<p style="color: rgb(0,0,0);">
-	{$result}
+	{$result->result}
 	</p>
 	</div> 
 {/if}
