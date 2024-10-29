@@ -133,7 +133,7 @@ class CalcCred{
         $smarty->assign('messages',$this->msgs);
        
 
-        $smarty->display($conf->root_path.'/app/calc_cred_view.tpl');
+        $smarty->display($conf->root_path.'/templates/calc_cred_view.tpl');
 
 
     }

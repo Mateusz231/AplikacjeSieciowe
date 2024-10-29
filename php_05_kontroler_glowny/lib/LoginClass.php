@@ -21,6 +21,8 @@ class Login{
     }
 
     public function validateLogin(){
+        session_start();
+        session_destroy();
         if ( ! (isset($this->form['login']) && isset($this->form['pass']))) {
             return false;
         }
@@ -70,10 +72,10 @@ class Login{
         
         if ( ! ($this->validateLogin()) ) {
             $smarty->assign('messages',$this->msgs);
-            $smarty->display($conf->root_path.'/app/security/login_view.tpl');
+            $smarty->display($conf->root_path.'/templates/login_view.tpl');
         } else { 
             
-            header("Location: ".$conf->app_url);
+           //   header("Location: ".$conf->app_url);
             //include_once($conf->root_path.'/app/calc_cred.php');
         }
         

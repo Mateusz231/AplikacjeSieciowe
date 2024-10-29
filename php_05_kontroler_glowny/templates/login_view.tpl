@@ -1,4 +1,4 @@
-{extends file="../../templates/main.tpl"}
+{extends file=$conf->root_path|cat:"/templates/main.tpl"}
 
 {block name=header}
 <p>{$page_header}</p>
@@ -9,7 +9,7 @@
 
 
 
-<form method="post" action="{$conf->app_url}/app/security/login.php">
+<form method="post" action="{$conf->action_root}LoginCompute">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="login" id="demo-name" value="" placeholder="Login" />

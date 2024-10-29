@@ -1,4 +1,4 @@
-{extends file="../templates/main.tpl"}
+{extends file=$conf->root_path|cat:"/templates/main.tpl"}
 
 
 {block name=header}
@@ -12,15 +12,12 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="{$conf->app_url}">Strona główna </a></li>
 
-								
-
-									<li><a href="{$conf->app_url}/app/security/logout.php">Wyloguj</a></li>
+									<li><a href="{$conf->action_root}Logout2">Wyloguj</a></li>
 
 									{if $role eq 'admin'}
 
-									<li><a href="{$conf->app_url}/app/admin_page.php">Admin page</a></li>
+									<li><a href="{$conf->action_root}Admin">Admin page</a></li>
 									{/if}		
 
 										
@@ -37,7 +34,7 @@
 
 
 
-<form method="post" action="{$conf->app_url}/app/calc_cred.php">
+<form method="post" action="{$conf->action_root}calcCompute">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="zl" id="demo-name" value="{$form->kredyt}" placeholder="Kredyt" />

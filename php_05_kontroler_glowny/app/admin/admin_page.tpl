@@ -1,4 +1,4 @@
-{extends file="../templates/main.tpl"}
+{extends file=$conf->root_path|cat:"/templates/main.tpl"}
 
 {block name=content}
 <html lang="en">
@@ -43,7 +43,7 @@
     </div>
     <h2 id="winnerMessage"></h2>
 
-    <script src="{$conf->app_url}/app/admin_script.js"></script>
+    <script src="{$conf->app_url}/app/admin/admin_script.js"></script>
 
 {/block}
 
@@ -55,11 +55,11 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="{$conf->app_url}">Strona główna </a></li>
+										<li><a href="{$conf->action_root}calcCompute">Strona główna </a></li>
 
 								
 
-									<li><a href="{$conf->app_url}/app/security/logout.php">Wyloguj</a></li>
+									<li><a href="{$conf->action_root}Logout2">Wyloguj</a></li>
 
 	
 																	
