@@ -1,4 +1,4 @@
-{extends file=$conf->root_path|cat:"/templates/main.tpl"}
+{extends file="main.tpl"}
 
 {block name=header}
 <p>{$page_header}</p>

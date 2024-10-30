@@ -1,18 +1,15 @@
 <?php
-require_once dirname(__FILE__).'/../config.php';
-
 
 class Check{
 
-    public function checkIn(){
-    global $role;    
+    public function checkIn(){    
     @session_start();
     $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
-    global $conf;
+
 
     if ( empty($role) ){
         
-        require_once $conf->root_path.'/lib/LoginClass.php';
+        require_once getConf()->root_path.'/app/controllers/LoginClass.php';
 
         $login = new Login();
         $login->process();

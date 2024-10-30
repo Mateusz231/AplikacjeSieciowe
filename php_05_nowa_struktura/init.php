@@ -6,11 +6,12 @@ include dirname(__FILE__).'/config.php'; //ustaw konfigurację
 function &getConf(){ global $conf; return $conf; }
 
 //załaduj definicję klasy Messages i stwórz obiekt
-require_once getConf()->root_path.'/core/Messages.class.php';
+require_once getConf()->root_path.'/core/MessagesClass.php';
 $msgs = new Messages();
 
 function &getMessages(){ global $msgs; return $msgs; }
-
+$role = null;
+global $role;
 //przygotuj Smarty, twórz tylko raz - wtedy kiedy potrzeba
 $smarty = null;	
 function &getSmarty(){

@@ -1,4 +1,4 @@
-{extends file=$conf->root_path|cat:"/templates/main.tpl"}
+{extends file="main.tpl"}
 
 {block name=content}
 <html lang="en">
@@ -43,7 +43,7 @@
     </div>
     <h2 id="winnerMessage"></h2>
 
-    <script src="{$conf->app_url}/app/admin/admin_script.js"></script>
+    <script src="{$conf->app_url}/core/admin_script.js"></script>
 
 {/block}
 

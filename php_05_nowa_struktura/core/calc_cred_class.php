@@ -1,30 +1,23 @@
 <?php
 
 
-require_once $conf->root_path.'/lib/smarty/Smarty.class.php';
-require_once $conf->root_path.'/lib/CalcMessagesClass.php';
-require_once $conf->root_path.'/lib/CalcFormClass.php';
-require_once $conf->root_path.'/lib/CalcResultClass.php';
+require_once $conf->root_path.'/app/controllers/CalcFormClass.php';
+require_once $conf->root_path.'/app/controllers/CalcResultClass.php';
 
 
 class CalcCred{
 
 
-
-    private $msgs;
     private $form;
     private $result;
     private $temp;
 
-
-
     public function __construct(){
 
-    $this->msgs= new CalcMessages();
     $this->form = new CalcForm();
     $this->result = new CalcResult();    
 
-    $this->msgs->clear();
+    getMessages()->clear();
 
     }
 
@@ -48,34 +41,34 @@ class CalcCred{
             $infos [] = 'Przekazano parametry.';	
             if ( $this->form->kredyt == "") {
                
-                $this->msgs->addError('Nie podano kredytu');
+                getMessages()->addError('Nie podano kredytu');
             }
             if ( $this->form->oprocentowanie == "") {     
-                $this->msgs->addError('Nie podano oprocentowania');
+                getMessages()->addError('Nie podano oprocentowania');
             }
         
             if ( $this->form->rok == "") {
-                $this->msgs->addError('Nie podano na ile lat');
+                getMessages()->addError('Nie podano na ile lat');
             }
 
-            if(! $this->msgs->isError()){
+            if(! getMessages()->isError()){
 
                 if (! is_numeric( $this->form->kredyt )) {
-                    $this->msgs->addError('Kredyt nie jest liczbą rzeczywistą');
+                    getMessages()->addError('Kredyt nie jest liczbą rzeczywistą');
                 }
                 
                 if (! is_numeric( $this->form->oprocentowanie)) {
-                    $this->msgs->addError('Oprocentowanie nie jest liczbą rzeczywistą');
+                    getMessages()->addError('Oprocentowanie nie jest liczbą rzeczywistą');
                 }	
             
                 if (! is_numeric( $this->form->rok)) {
-                    $this->msgs->addError('Rok nie jest liczbą całkowitą');
+                    getMessages()->addError('Rok nie jest liczbą całkowitą');
                 }	
 
             }
             
            
-            return ! $this->msgs->isError();
+            return ! getMessages()->isError();
         
 
     }
@@ -93,7 +86,7 @@ class CalcCred{
             $this->form->oprocentowanie = floatval($this->form->oprocentowanie);
             $this->form->rok = intval($this->form->rok);
 
-            $this->msgs->addInfo('Parametry poprawne');
+            getMessages()->addInfo('Parametry poprawne');
 
 
             $this->result->result = $this->form->kredyt/($this->form->rok*12);
@@ -101,7 +94,7 @@ class CalcCred{
             $this->result->result = round($this->result->result+$this->temp,2);
 
 
-            $this->msgs->addInfo('Wykonano obliczenia');
+            getMessages()->addInfo('Wykonano obliczenia');
 
           
 
@@ -115,25 +108,21 @@ class CalcCred{
 
     public function generateView(){
 
-
-        global $conf;
+  
         global $role;
-        
-        
 
-        $smarty = new Smarty();
-        $smarty->assign('conf',$conf);
-        $smarty->assign('role',$role);
-        $smarty->assign('page_title','Kalkulator kredytowy');
-        $smarty->assign('page_header','Kalkulator kredytowy');
-        $smarty->registerPlugin("modifier", "count", "count");
 
-        $smarty->assign('form',$this->form);
-        $smarty->assign('result',$this->result);
-        $smarty->assign('messages',$this->msgs);
+        getSmarty()->assign('page_title','Kalkulator kredytowy');
+        getSmarty()->assign('page_header','Kalkulator kredytowy');
+        getSmarty()->assign('role',$role);
+        //getSmarty()->registerPlugin("modifier", "count", "count");
+
+        getSmarty()->assign('form',$this->form);
+        getSmarty()->assign('result',$this->result);
+        getSmarty()->assign('messages',getMessages());
        
 
-        $smarty->display($conf->root_path.'/templates/calc_cred_view.tpl');
+        getSmarty()->display('calc_cred_view.tpl');
 
 
     }

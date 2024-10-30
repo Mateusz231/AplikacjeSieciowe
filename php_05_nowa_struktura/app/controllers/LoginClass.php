@@ -1,19 +1,10 @@
 <?php
-require_once dirname(__FILE__).'/../config.php';
-require_once $conf->root_path.'/lib/smarty/Smarty.class.php';
-require_once $conf->root_path.'/lib/CalcMessagesClass.php';
 class Login{
 
 
 
     private $form;
-    private $msgs;
     
-    public function __construct(){
-        $this->msgs = new CalcMessages;
-    }
-    
-
 
     public function getParamsLogin(){
         $this->form['login'] = isset ($_REQUEST ['login']) ? $_REQUEST ['login'] : null;
@@ -21,23 +12,25 @@ class Login{
     }
 
     public function validateLogin(){
-        session_start();
-        session_destroy();
+        @session_start();
+        @session_destroy();
         if ( ! (isset($this->form['login']) && isset($this->form['pass']))) {
             return false;
         }
     
         if ( $this->form['login'] == "") {
-            $this->msgs->addError('Nie podano loginu');
+            getMessages()->addError('Nie podano loginu');
         }
         if ( $this->form['pass'] == "") {
-            $this->msgs->addError('Nie podano hasła');
+            getMessages()->addError('Nie podano hasła');
         }
 
-        if (! $this->msgs->isError()){
+        if (! getMessages()->isError()){
             if ($this->form['login'] == "admin" && $this->form['pass'] == "admin") {
                 session_start();
                 $_SESSION['role'] = 'admin';
+                global $role;
+                $role ='admin';
     
                 return true;
             }
@@ -49,30 +42,24 @@ class Login{
             
         } 
 
-        $this->msgs->addError('Nieprawidłowy login lub hasło');
+        getMessages()->addError('Nieprawidłowy login lub hasło');
         return false; 
     }
     
 
     public function process(){
 
-        global $conf;
-        global $role;        
-        $smarty = new Smarty();
-        $smarty->assign('conf',$conf);
-        $smarty->assign('page_title','Zaloguj sie');
-        $smarty->assign('page_header','Logowanie');
-        $smarty->registerPlugin("modifier", "count", "count");
-        $smarty->assign('messages',$this->msgs);
+        getSmarty()->assign('page_title','Zaloguj sie');
+        getSmarty()->assign('page_header','Logowanie');
+        getSmarty()->registerPlugin("modifier", "count", "count");
+        getSmarty()->assign('messages',getMessages());
+        getSmarty()->assign('$conf',getConf());
 
-
-    
         $this->getParamsLogin();
         
         
         if ( ! ($this->validateLogin()) ) {
-            $smarty->assign('messages',$this->msgs);
-            $smarty->display($conf->root_path.'/templates/login_view.tpl');
+            getSmarty()->display('login_view.tpl');
         } else { 
             
            //   header("Location: ".$conf->app_url);
