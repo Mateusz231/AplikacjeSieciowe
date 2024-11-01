@@ -1,5 +1,6 @@
 <?php
-
+namespace app\controllers;
+use app\controllers\Login;
 class Check{
 
     public function checkIn(){    
@@ -9,12 +10,9 @@ class Check{
 
     if ( empty($role) ){
         
-        require_once getConf()->root_path.'/app/controllers/LoginClass.php';
-
-        $login = new Login();
-        $login->process();
-        
-
+        $ctrl = new Login();
+		$ctrl ->process();
+	
 	exit();
     }
   

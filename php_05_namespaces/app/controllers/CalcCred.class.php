@@ -1,9 +1,9 @@
 <?php
+namespace app\controllers;
 
-
-require_once $conf->root_path.'/app/controllers/CalcFormClass.php';
-require_once $conf->root_path.'/app/controllers/CalcResultClass.php';
-
+//zamieniamy zatem 'require' na 'use' wskazując jedynie przestrzeń nazw, w której znajduje się klasa
+use app\controllers\CalcForm;
+use app\controllers\CalcResult;
 
 class CalcCred{
 

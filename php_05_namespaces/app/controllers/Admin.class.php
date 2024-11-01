@@ -1,19 +1,20 @@
 <?php
 
-
+namespace app\controllers;
+use app\controllers\Check;
+use app\controllers\Login;
 Class Admin{
 
+  
 
     public function admin_page(){
-
-include_once getConf()->root_path.'/app/controllers/CheckClass.php';
-$check = new Check();
-$check->checkIn();
+		$ctrl =  new Check();
+		$ctrl -> checkIn();
 @session_start();
 if($_SESSION['role'] && $_SESSION['role']!='admin'){
-    include_once getConf()->root_path.'/app/controllers/LoginClass.php'; 
-    $login = new Login();
-    $login->process();
+
+    $ctrl = new Login();
+    $ctrl ->process();
 }
 
 
