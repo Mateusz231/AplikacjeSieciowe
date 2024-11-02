@@ -1,5 +1,5 @@
 <?php
-namespace app\controllers;
+namespace app\forms;
 class CalcForm {
 	public $kredyt;
 	public $oprocentowanie;

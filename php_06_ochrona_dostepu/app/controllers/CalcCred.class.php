@@ -2,8 +2,9 @@
 namespace app\controllers;
 
 //zamieniamy zatem 'require' na 'use' wskazując jedynie przestrzeń nazw, w której znajduje się klasa
-use app\controllers\CalcForm;
-use app\controllers\CalcResult;
+use app\forms\CalcForm;
+use app\transfer\CalcResult;
+
 
 class CalcCred{
 
@@ -12,10 +13,12 @@ class CalcCred{
     private $result;
     private $temp;
 
+
     public function __construct(){
 
     $this->form = new CalcForm();
-    $this->result = new CalcResult();    
+    $this->result = new CalcResult();
+   
 
     getMessages()->clear();
 
@@ -109,19 +112,24 @@ class CalcCred{
     public function generateView(){
 
   
-        global $role;
-
-
         getSmarty()->assign('page_title','Kalkulator kredytowy');
         getSmarty()->assign('page_header','Kalkulator kredytowy');
-        getSmarty()->assign('role',$role);
+       // getSmarty()->assign('role',$this->role);
         //getSmarty()->registerPlugin("modifier", "count", "count");
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        $user = isset($_SESSION['user']) ? unserialize($_SESSION['user']) : null;
+        if(isset($user->role) && isset($user->role)=='admin'){
+            getSmarty()->assign('role',$user->role);
+        }
 
         getSmarty()->assign('form',$this->form);
         getSmarty()->assign('result',$this->result);
-        getSmarty()->assign('messages',getMessages());
-       
 
+    
         getSmarty()->display('calc_cred_view.tpl');
 
 

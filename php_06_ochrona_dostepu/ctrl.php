@@ -6,15 +6,13 @@ require_once 'init.php';
 switch ($action) {
 	default : 
 		
-
-	$ctrl = new app\controllers\Login();
-	$ctrl ->process();
+	include 'check.php'; 
+		$ctrl = new app\controllers\CalcCred();
+		$ctrl->generateView ();
 
 	break;
 	case 'calcCompute' :
-		$ctrl = new app\controllers\Check();
-		$ctrl -> checkIn();
-
+		include 'check.php'; 
 		$ctrl = new app\controllers\CalcCred();
 		$ctrl -> process();
 
@@ -24,10 +22,7 @@ switch ($action) {
 
 
 		$ctrl = new app\controllers\Login();
-		$ctrl ->process();
-
-		$ctrl = new app\controllers\Check();
-		$ctrl -> checkIn();
+		$ctrl->doLogin();
 
 		$ctrl = new app\controllers\CalcCred();
 		$ctrl -> generateView();
@@ -35,19 +30,15 @@ switch ($action) {
 	break;
 	case 'Logout2' :
 
+		include 'check.php';  
 		$ctrl = new app\controllers\Login();
-		$ctrl ->process();
+		$ctrl->doLogout();
 
 	break;
 
 
 	case 'Admin' : 
-		/*
-		require_once getConf()->root_path.'/app/controllers/admin_pageClass.php';
-		$admin = new Admin();
-		$admin->admin_page();
-		*/
-
+		include 'check.php';  
 		$ctrl = new app\controllers\Admin();
 		$ctrl ->admin_page();
 
