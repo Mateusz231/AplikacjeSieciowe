@@ -28,9 +28,9 @@ class CalcCred{
 
 
     public function getParams(){
-        $this->form->kredyt = isset($_REQUEST['zl']) ? $_REQUEST['zl'] : null;
-        $this->form->rok = isset($_REQUEST['rok']) ? $_REQUEST['rok'] : null;
-        $this->form->oprocentowanie = isset($_REQUEST['op']) ? $_REQUEST['op'] : null;
+        $this->form->kredyt = getFromRequest('zl');
+        $this->form->rok = getFromRequest('rok');
+        $this->form->oprocentowanie = getFromRequest('op');
        
     }
 
@@ -117,14 +117,7 @@ class CalcCred{
        // getSmarty()->assign('role',$this->role);
         //getSmarty()->registerPlugin("modifier", "count", "count");
 
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        
-        $user = isset($_SESSION['user']) ? unserialize($_SESSION['user']) : null;
-        if(isset($user->role) && isset($user->role)=='admin'){
-            getSmarty()->assign('role',$user->role);
-        }
+        getSmarty()->assign('user',unserialize($_SESSION['user']));
 
         getSmarty()->assign('form',$this->form);
         getSmarty()->assign('result',$this->result);

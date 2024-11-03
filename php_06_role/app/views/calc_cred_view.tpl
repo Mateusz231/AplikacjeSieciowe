@@ -15,7 +15,7 @@
 
 									<li><a href="{$conf->action_root}Logout2">Wyloguj</a></li>
 
-									{if $role eq 'admin'}
+									{if $user->role eq 'admin'}
 
 									<li><a href="{$conf->action_root}Admin">Admin page</a></li>
 									{/if}		

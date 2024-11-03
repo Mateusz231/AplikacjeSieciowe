@@ -48,25 +48,23 @@ class Login{
 			// sprawdzenie, czy dane logowania poprawne
 			// (takie informacje najczęściej przechowuje się w bazie danych)
 			if ($this->form->login == "admin" && $this->form->pass == "admin") {
-				if (session_status() == PHP_SESSION_NONE) {
-					session_start();
-				}
+
+				//sesja już rozpoczęta w init.php, więc działamy ...
 				$user = new User($this->form->login, 'admin');
-				// zapis wartości do sesji
-				//$_SESSION['user_login'] = $user->login;
-				//$_SESSION['user_role'] = $user->role;
-				// LUB można zapisać or razu cały obiekt, ale trzeba go zserializować
-				$_SESSION['user'] = serialize($user);				
+				// zaipsz obiekt użytkownika w sesji
+				$_SESSION['user'] = serialize($user);
+				// dodaj rolę użytkownikowi (jak wiemy, zapisane też w sesji)
+				addRole($user->role);
+
 			} else if ($this->form->login == "user" && $this->form->pass == "user") {
-				if (session_status() == PHP_SESSION_NONE) {
-					session_start();
-				}
+
+				//sesja już rozpoczęta w init.php, więc działamy ...
 				$user = new User($this->form->login, 'user');
-				// zapis wartości do sesji
-				//$_SESSION['user_login'] = $user->login;
-				//$_SESSION['user_role'] = $user->role;
-				// LUB całego obiekt, po serializacji
-				$_SESSION['user'] = serialize($user);				
+				// zaipsz obiekt użytkownika w sesji
+				$_SESSION['user'] = serialize($user);
+				// dodaj rolę użytkownikowi (jak wiemy, zapisane też w sesji)
+				addRole($user->role);
+
 			} else {
 				getMessages()->addError('Niepoprawny login lub hasło');
 			}
@@ -80,25 +78,18 @@ class Login{
 		$this->getParamsLogin();
 		
 		if ($this->validate()){
-			//zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
 			//header("Location: ".getConf()->app_url."/");
+			control('app\\controllers', 'CalcCred',	'generateView');
 		} else {
-			//niezalogowany => wyświetl stronę logowania
 			$this->generateView(); 
 		}
 		
 	}
 
     public function doLogout(){
-		// 1. zakończenie sesji
-		if (session_status() == PHP_SESSION_NONE) {
-			session_start();
-		}
+	
 		session_destroy();
-		
-		// 2. wyświetl stronę logowania z informacją
 		getMessages()->addInfo('Poprawnie wylogowano z systemu');
-
 		$this->generateView();		 
 	}
 
