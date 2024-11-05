@@ -13,11 +13,11 @@
 									</header>
 									<ul>
 
-									<li><a href="{$conf->action_root}Logout2">Wyloguj</a></li>
+									<li><a href="{$conf->action_root}doLogout">Wyloguj</a></li>
 
 									{if $user->role eq 'admin'}
 
-									<li><a href="{$conf->action_root}Admin">Admin page</a></li>
+									<li><a href="{$conf->action_root}admin_page">Admin page</a></li>
 									{/if}		
 
 										
@@ -34,7 +34,7 @@
 
 
 
-<form method="post" action="{$conf->action_root}calcCompute">
+<form method="post" action="{$conf->action_root}calc_compute">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="zl" id="demo-name" value="{$form->kredyt}" placeholder="Kredyt" />

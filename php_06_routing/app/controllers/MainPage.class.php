@@ -7,7 +7,7 @@ Class MainPage{
 
 
 
-    public function MainP(){
+    public function action_MainPage(){
         getSmarty()->assign('page_title','Strona główna');
         getSmarty()->assign('page_header','');
         getSmarty()->display('MainPage.tpl');	

@@ -7,7 +7,7 @@ Class Admin{
 
   
 
-    public function admin_page(){
+    public function action_admin_page(){
 
  
 getSmarty()->assign('page_title','Kółko i krzyżyk');

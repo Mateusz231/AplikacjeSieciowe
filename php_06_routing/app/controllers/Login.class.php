@@ -73,28 +73,28 @@ class Login{
 		return ! getMessages()->isError();
 	}
     
-    public function doLogin(){
+    public function action_doLogin(){
 
 		$this->getParamsLogin();
 		
 		if ($this->validate()){
 			//header("Location: ".getConf()->app_url."/");
-			control('app\\controllers', 'CalcCred',	'generateView');
+			header("Location: ".getConf()->app_url."/ctrl.php?action=show_calc");
 		} else {
-			$this->generateView(); 
+			$this->action_LoginView(); 
 		}
 		
 	}
 
-    public function doLogout(){
+    public function action_doLogout(){
 	
 		session_destroy();
 		getMessages()->addInfo('Poprawnie wylogowano z systemu');
-		$this->generateView();		 
+		$this->action_LoginView();		 
 	}
 
    
-public function generateView(){
+public function action_LoginView(){
 	getSmarty()->assign('page_title','Zaloguj sie');
     getSmarty()->assign('page_header','Logowanie');
     getSmarty()->registerPlugin("modifier", "count", "count");	

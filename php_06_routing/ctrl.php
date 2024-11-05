@@ -2,42 +2,21 @@
 
 require_once 'init.php';
 
-getConf()->login_action = 'login';
 
 
-switch ($action) {
-	default : 
-		
-	control('app\\controllers', 'MainPage',		'MainP');
-	break;
-	case 'calcCompute' :
-
-		control('app\\controllers', 'CalcCred',		'process',['user','admin']);
-	break;
-	case 'LoginCompute' :
-
-	   	control('app\\controllers', 'Login',	'doLogin');
-		
-	break;
-
-	case 'LoginView':
-
-		control('app\\controllers', 'Login',	'generateView');
-
-		break;
-
-	case 'Logout2' :
-
-		control('app\\controllers', 'Login',	'doLogout',['user','admin']);
-
-	break;
+	
 
 
-	case 'Admin' : 
 
-		control('app\\controllers', 'Admin',	'admin_page',['admin']);
-
-	break;	
-
-
-}
+	getRouter()->setDefaultRoute('MainPage'); // akcja/ścieżka domyślna
+	//getRouter()->setLoginRoute('doLogin'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
+	getRouter()->addRoute('MainPage', 'MainPage');
+	getRouter()->addRoute('show_calc',    'CalcCred',  ['user','admin']);
+	getRouter()->addRoute('calc_compute', 'CalcCred',  ['user','admin']);
+	getRouter()->addRoute('LoginView',       'Login');
+	getRouter()->addRoute('doLogout',      'Login', ['user','admin']);
+	getRouter()->addRoute('doLogin','Login');
+	getRouter()->addRoute('admin_page',      'Admin', ['admin']);
+	
+	
+	getRouter()->go(); //wybiera i uruchamia odpowiednią ścieżkę na podstawie parametru 'action';

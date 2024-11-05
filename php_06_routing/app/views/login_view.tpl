@@ -9,7 +9,7 @@
 
 
 
-<form method="post" action="{$conf->action_root}LoginCompute">
+<form method="post" action="{$conf->action_root}doLogin">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="login" id="demo-name" value="" placeholder="Login" />

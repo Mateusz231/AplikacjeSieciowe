@@ -76,7 +76,7 @@ class CalcCred{
 
     }
 
-    public function process(){
+    public function action_calc_compute(){
 
 
         $this->getParams();
@@ -104,12 +104,12 @@ class CalcCred{
         }
 
 
-        $this->generateView();
+        $this->action_show_calc();
 
 
     }
 
-    public function generateView(){
+    public function action_show_calc(){
 
   
         getSmarty()->assign('page_title','Kalkulator kredytowy');
