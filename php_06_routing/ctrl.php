@@ -3,13 +3,7 @@
 require_once 'init.php';
 
 
-
-	
-
-
-
-	getRouter()->setDefaultRoute('MainPage'); // akcja/ścieżka domyślna
-	//getRouter()->setLoginRoute('doLogin'); // akcja/ścieżka na potrzeby logowania (przekierowanie, gdy nie ma dostępu)
+	getRouter()->setDefaultRoute('MainPage'); 
 	getRouter()->addRoute('MainPage', 'MainPage');
 	getRouter()->addRoute('show_calc',    'CalcCred',  ['user','admin']);
 	getRouter()->addRoute('calc_compute', 'CalcCred',  ['user','admin']);
@@ -19,4 +13,4 @@ require_once 'init.php';
 	getRouter()->addRoute('admin_page',      'Admin', ['admin']);
 	
 	
-	getRouter()->go(); //wybiera i uruchamia odpowiednią ścieżkę na podstawie parametru 'action';
+	getRouter()->go(); 

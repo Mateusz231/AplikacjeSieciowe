@@ -18,7 +18,13 @@
 									{if $user->role eq 'admin'}
 
 									<li><a href="{$conf->action_root}admin_page">Admin page</a></li>
-									{/if}		
+									{/if}	
+
+
+									{if $user->role eq 'admin'}
+
+									<li><a href="{$conf->action_root}showHistory">Historia kalkulacji</a></li>
+									{/if}	
 
 										
 	

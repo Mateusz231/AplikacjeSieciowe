@@ -17,6 +17,6 @@ require_once 'init.php';
 	getRouter()->addRoute('doLogout',      'Login', ['user','admin']);
 	getRouter()->addRoute('doLogin','Login');
 	getRouter()->addRoute('admin_page',      'Admin', ['admin']);
-	
+	getRouter()->addRoute('showHistory',      'CalcHistory', ['admin']);
 	
 	getRouter()->go(); //wybiera i uruchamia odpowiednią ścieżkę na podstawie parametru 'action';

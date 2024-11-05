@@ -104,6 +104,47 @@ class CalcCred{
         }
 
 
+        try{
+
+         $database = new \Medoo\Medoo([   
+         'database_type'=>'mysql',
+         'database_name'=>'calc',
+         'server'=>'localhost',
+         'username'=>'root',
+         'password'=>'',
+         'charset'=>'utf8',
+         'collation'=>'utf8_polish_ci',
+         'port'=>3306,
+         'option'=>[
+            \PDO::ATTR_CASE => \PDO::CASE_NATURAL,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+         ]
+
+
+        ]);
+
+
+        $database->insert("wynik",[
+
+        "kwota"=>$this->form->kredyt,
+        "lat"=>$this->form->rok,
+        "procent"=>$this->form->oprocentowanie,
+        "rata"=>$this->result->result,
+        "data"=>date("Y-m-d H:i:s")
+
+
+        ]);
+
+
+        }
+
+
+        catch (\PDOException $ex ){
+            getMessages()->addError("DB Error: ".$ex->getMessage());
+        }
+
+
+
         $this->action_show_calc();
 
 
