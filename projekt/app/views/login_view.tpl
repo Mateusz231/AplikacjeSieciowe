@@ -38,7 +38,7 @@
 									</div>
 								</br>
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="pass" id="demo-email" value="" placeholder="Password" />
+										<input type="password" name="pass" id="demo-email" value="" placeholder="Password" />
 									</div>
 
 

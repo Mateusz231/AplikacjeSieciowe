@@ -5,6 +5,7 @@ namespace app\controllers;
 use core\App;
 use core\Utils;
 use core\RoleUtils;
+use core\SessionUtils;
 use core\ParamUtils;
 use app\forms\LoginForm;
 
@@ -32,23 +33,66 @@ class LoginCtrl {
             Utils::addErrorMessage('Nie podano hasła');
         }
 
+
+        $idd = App::getDB()->get("users", "userid", [
+            "login" => $this->form->login
+        ]);  
+
+        if(empty($idd)){
+            Utils::addErrorMessage('Podane konto nie istnieje!');
+        }
+
         //nie ma sensu walidować dalej, gdy brak wartości
-        if (App::getMessages()->isError())
+        if (App::getMessages()->isError()){
             return false;
+        }
+            
 
         // sprawdzenie, czy dane logowania poprawne
         // (takie informacje najczęściej przechowuje się w bazie danych)
 
 
 
-        // Implementacja z bazą danych!
-        if ($this->form->login == "admin" && $this->form->pass == "admin") {
-            RoleUtils::addRole('admin');
-        } else if ($this->form->login == "user" && $this->form->pass == "user") {
-            RoleUtils::addRole('user');
-        } else {
-            Utils::addErrorMessage('Niepoprawny login lub hasło');
+
+        $temp = array();
+
+
+        $temp = App::getDB()->get("users", [
+            "login",
+            "pass",
+            ], ["userid" => $idd
+        ]);
+
+
+
+      
+
+        if(strcmp($temp["login"],$this->form->login) == 0  && password_verify($this->form->pass,$temp["pass"]) ){
+          //  Utils::addErrorMessage("Poprawny login i hasło");
+         $role = App::getDB()->get("users_role",[
+         "roles_roleid",       
+         ], [ "users_userid" => $idd
+         ]);
+
+         $role2 = App::getDB()->get("roles",[
+
+         "rolename",
+         "IsActive",   
+
+         ],[ "roleid" => $role
+
+         ]);
+         
+         RoleUtils::addRole($role2["rolename"]);
+         SessionUtils::store("id", $idd);
+
+
         }
+        else{
+            Utils::addErrorMessage("Niepoprawny login lub hasło");
+        }
+
+
 
         return !App::getMessages()->isError();
     }
