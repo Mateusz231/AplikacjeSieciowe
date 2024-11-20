@@ -9,7 +9,7 @@
 									<ul>
 
 									<li><a href="{$conf->action_root}LoginView">Zaloguj</a></li>
-
+									<li><a href="{$conf->action_root}LoginView">Zarejestruj sie</a></li>
 										
 	
 																	
