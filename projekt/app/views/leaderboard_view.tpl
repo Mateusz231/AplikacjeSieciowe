@@ -27,6 +27,20 @@
 
 
 {block name="content"}
+<form method="post" action="{$conf->action_root}search">
+								<div class="row gtr-uniform">
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="slogin" id="demo-name" value="" placeholder="Login" />
+									</div>
+								</br>
+									
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Filtruj" class="primary" /></li>
+										</ul>
+									</div>
+								</div>
+</form>
 
 
 <div class="table-wrapper">
