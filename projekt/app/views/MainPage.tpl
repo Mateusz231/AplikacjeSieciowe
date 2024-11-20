@@ -23,7 +23,7 @@
 
 									<li><a href="{$conf->action_root}logout">Wyloguj sie</a></li>
 									<li><a href="{$conf->action_root}play">Graj</a></li>
-									<li><a href="{$conf->action_root}rankings">Ranking graczy</a></li>
+									<li><a href="{$conf->action_root}leaderboardShow">Ranking graczy</a></li>
 									<li><a href="{$conf->action_root}profile">Twój profil</a></li>
 									<li><a href="{$conf->action_root}profile">Wiadomości</a></li>
 									{if \core\RoleUtils::inRole("admin")}

@@ -25,12 +25,21 @@ class ProfileCtrl{
 
 
 
+    // Dodatkowe dane profilowe do edycji;
+    
+
+
+
+
+
+    public function action_profileShow(){
 
 
 
 
 
 
+    }
 
 
 
