@@ -12,5 +12,4 @@ Utils::addRoute('register','RegisterCtrl');
 Utils::addRoute('doLogin','LoginCtrl');
 Utils::addRoute('loginShow','LoginCtrl');
 Utils::addRoute('logout','LoginCtrl');
-Utils::addRoute('leaderboardShow','RankingsCtrl');
 Utils::addRoute('search','RankingsCtrl');

@@ -14,7 +14,9 @@ use core\ParamUtils;
 class RankingsCtrl{
 
     private $table;
-    private $paramsearch;
+    private $loginsearch;
+    private $rankingsearch;
+    private $orderparam = array();
 
     public function __construct(){
 
@@ -22,36 +24,27 @@ class RankingsCtrl{
     }
 
 
-
-    public function getData(){
-        try {
-            $this->table = App::getDB()->select("rankings", [
-                "[>]users" => ["users_userid" => "userid"]
-            ], [
-                "rankings.gamesplayed",
-                "rankings.wins",
-                "rankings.loses",
-                "rankings.draws",
-                "rankings.rating",
-                "users.login"
-            ]);
-        } catch (\PDOException $e) {
-            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
-            if (App::getConf()->debug)
-                Utils::addErrorMessage($e->getMessage());
-        }
-    }
     
     public function action_search(){
 
-        $this->paramsearch = ParamUtils::getFromRequest('slogin');
+        $this->loginsearch = ParamUtils::getFromRequest('slogin');
+        $this->rankingsearch = ParamUtils::getFromRequest('srank');
 
-        if(empty($this->paramsearch))
-        {
-            $this->action_leaderboardShow();
+      
+
+        $orderparam = ParamUtils::getFromCleanURL(2, false, 'Błędne wywołanie aplikacji');
+
+
+        $where = [];
+    
+        if (!empty($this->loginsearch)) {
+            $where["users.login[~]"] = $this->loginsearch;
         }
-           
         
+        if (!empty($this->rankingsearch)) {
+            $where["rankings.rating[~]"] = $this->rankingsearch; // lub inny operator np. [<=], [=]
+        }
+      
 
         try {
             $this->table = App::getDB()->select("rankings", [
@@ -63,9 +56,11 @@ class RankingsCtrl{
                 "rankings.draws",
                 "rankings.rating",
                 "users.login"
-            ], [ "users.login" => $this->paramsearch
+            ], $where);
+              
+                
 
-            ]);
+            
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
             if (App::getConf()->debug)
@@ -79,15 +74,8 @@ class RankingsCtrl{
 
 
 
-
-
-    public function action_leaderboardShow(){
-        $this->getData();
-        $this->generateView();
-    }
-
-
     public function generateView(){
+        App::getSmarty()->assign('URL',$this->orderparam);
         App::getSmarty()->assign("tabela",$this->table);
         App::getSmarty()->assign('page_header','Ranking graczy');
         App::getSmarty()->assign('page_title','Ranking');

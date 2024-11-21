@@ -32,7 +32,12 @@
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="slogin" id="demo-name" value="" placeholder="Login" />
 									</div>
-								</br>
+
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="srank" id="demo-name" value="" placeholder="Ranking" />
+									</div>
+
+
 									
 									<div class="col-12">
 										<ul class="actions">
@@ -47,7 +52,7 @@
 														<table>
 															<thead>
 																<tr>
-																	<th>Login/Nickname</th>
+																	<th>Login/Nickname <a href="{$conf->action_root}search/login/asc">▲</a><a href="{$conf->action_root}search/login/desc">▼</a></th>
 																	<th>Ilosc gier</th>
 																	<th>Wygrane</th>
                                                                     <th>Przegrane</th>
@@ -68,6 +73,7 @@
                                                                 <td>{$item['draws']}</td>
                                                                 <td>{$item['rating']}</td>    
                                                                 </tr>
+																
                                                                 {/foreach}    
                                                                 
                                                                 
@@ -75,6 +81,8 @@
 															</tbody>
 														
 														</table>
+
+														
 													</div>
 
 

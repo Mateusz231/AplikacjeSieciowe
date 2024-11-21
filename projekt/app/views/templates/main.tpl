@@ -46,6 +46,21 @@
   		border-color: #c3e6cb;
 		}
 		
+		th .sort-indicator {
+    font-size: 0.8em;
+    margin-left: 5px;
+    color: gray;
+}
+
+th.asc .sort-indicator::after {
+    content: "▲";
+    margin-left: 5px;
+}
+
+th.desc .sort-indicator::after {
+    content: "▼";
+    margin-left: 5px;
+}
 
 		</style>
 
@@ -67,9 +82,7 @@
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
 										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
 									</ul>
 								</header>
 
