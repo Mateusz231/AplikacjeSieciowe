@@ -12,7 +12,6 @@
 									</header>
 									<ul>
 
-									<li><a href="{$conf->action_root}loginShow">Zaloguj</a></li>
 									<li><a href="{$conf->action_root}MainPage">Strona główna</a></li>
 
 										

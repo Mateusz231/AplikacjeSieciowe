@@ -13,3 +13,6 @@ Utils::addRoute('doLogin','LoginCtrl');
 Utils::addRoute('loginShow','LoginCtrl');
 Utils::addRoute('logout','LoginCtrl');
 Utils::addRoute('search','RankingsCtrl');
+Utils::addRoute('adminsearch', 'AdminPanel');
+Utils::addRoute('adminedit', 'AdminPanel');
+Utils::addRoute('admindelete', 'AdminPanel');

@@ -1,7 +1,7 @@
 <?php
 
-
 namespace app\controllers;
+
 
 
 use core\App;
@@ -9,27 +9,66 @@ use core\Utils;
 use core\RoleUtils;
 use core\SessionUtils;
 use core\ParamUtils;
+use app\forms\PersonEditForm;
 
 
-class RankingsCtrl{
+class AdminPanel{
 
+
+    
     private $table;
     private $loginsearch;
     private $rankingsearch;
     private $orderparam;
+    private $form;
 
 
     public function __construct(){
+    $this->form = new PersonEditForm();
+    }
 
+    public function validateEdit(){
+        $this->orderparam[0] = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');
+        return !App::getMessages()->isError();
+    }
+
+
+    public function action_adminedit(){
+      $this->action_generateEdit();
 
     }
 
 
+    public function action_admindelete(){
+        if ($this->validateEdit()) {
+
+            try {
+
+                App::getDB()->delete("users_role", [
+                    "users_userid" => $this->orderparam[0]
+                ]);
+                App::getDB()->delete("rankings", [
+                    "users_userid" => $this->orderparam[0]
+                ]);
+                // 2. usunięcie rekordu
+                App::getDB()->delete("users", [
+                    "userid" => $this->orderparam[0]
+                ]);
+                Utils::addInfoMessage('Pomyślnie usunięto rekord');
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas usuwania rekordu');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+            }
+        }
+
+        // 3. Przekierowanie na stronę listy osób
+        App::getRouter()->forwardTo('search');
+    }
 
 
 
-    
-    public function action_search(){
+    public function action_adminsearch(){
 
         $this->loginsearch = ParamUtils::getFromRequest('slogin');
         $this->rankingsearch = ParamUtils::getFromRequest('srank');
@@ -95,6 +134,7 @@ class RankingsCtrl{
             $this->table = App::getDB()->select("rankings", [
                 "[>]users" => ["users_userid" => "userid"]
             ], [
+                "users.userid",
                 "rankings.gamesplayed",
                 "rankings.wins",
                 "rankings.loses",
@@ -117,22 +157,30 @@ class RankingsCtrl{
         $this->generateView();
     }
 
+    public function action_generateEdit(){
+        App::getSmarty()->assign('page_header','Edycja użytkownika');
+        App::getSmarty()->assign('page_title','Edycja');
+        App::getSmarty()->display('admin_person_edit.tpl');    
+    }
+
 
 
     public function generateView(){
-        App::getSmarty()->assign('URL',$this->orderparam);
         App::getSmarty()->assign("tabela",$this->table);
-        App::getSmarty()->assign('page_header','Ranking graczy');
-        App::getSmarty()->assign('page_title','Ranking');
-        App::getSmarty()->display('leaderboard_view.tpl');    
+        App::getSmarty()->assign('page_header','Admin');
+        App::getSmarty()->assign('page_title','Admin');
+        App::getSmarty()->display('admin_panel_view.tpl');    
 
 
     }
-    
-    
-    
-        
+
+
+
+
+
+
+
+
 
 
 }
-

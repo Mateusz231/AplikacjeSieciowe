@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-11-22 16:18:07
-  from 'C:\xampp\htdocs\AplikacjeSieciowe\projekt\app\views\leaderboard_view.tpl' */
+/* Smarty version 4.5.3, created on 2024-11-22 15:57:53
+  from 'C:\xampp\htdocs\AplikacjeSieciowe\projekt\app\views\admin_panel_view.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_6740a0af1b6626_37874244',
+  'unifunc' => 'content_67409bf13ba595_65462761',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '003e29b193bd387f4664a826018529afab89ee87' => 
+    'f1c1f97aba4d5f112fe492e0d6d695958d15b185' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\projekt\\app\\views\\leaderboard_view.tpl',
-      1 => 1732286975,
+      0 => 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\projekt\\app\\views\\admin_panel_view.tpl',
+      1 => 1732287472,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6740a0af1b6626_37874244 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67409bf13ba595_65462761 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13073291606740a0af192967_79934078', 'header');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_24147428867409bf13893a2_92909202', 'header');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14956528236740a0af198173_99679218', 'sidebar');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_193675021167409bf138e7c1_24104952', 'sidebar');
 ?>
 
 
@@ -41,7 +41,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14956528236740a0af
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20947825566740a0af199985_94315017', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_122734435867409bf13946f8_16870084', "content");
 ?>
 
 
@@ -51,7 +51,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20947825566740a0af
 
 <section>
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10171712906740a0af1acc92_67673343', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_151825520667409bf13afc29_03002947', 'messages');
 ?>
 
 </section>
@@ -61,12 +61,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10171712906740a0af
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "main.tpl");
 }
 /* {block 'header'} */
-class Block_13073291606740a0af192967_79934078 extends Smarty_Internal_Block
+class Block_24147428867409bf13893a2_92909202 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header' => 
   array (
-    0 => 'Block_13073291606740a0af192967_79934078',
+    0 => 'Block_24147428867409bf13893a2_92909202',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -79,12 +79,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'header'} */
 /* {block 'sidebar'} */
-class Block_14956528236740a0af198173_99679218 extends Smarty_Internal_Block
+class Block_193675021167409bf138e7c1_24104952 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'sidebar' => 
   array (
-    0 => 'Block_14956528236740a0af198173_99679218',
+    0 => 'Block_193675021167409bf138e7c1_24104952',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -111,19 +111,19 @@ MainPage">Strona główna</a></li>
 }
 /* {/block 'sidebar'} */
 /* {block "content"} */
-class Block_20947825566740a0af199985_94315017 extends Smarty_Internal_Block
+class Block_122734435867409bf13946f8_16870084 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_20947825566740a0af199985_94315017',
+    0 => 'Block_122734435867409bf13946f8_16870084',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search">
+adminsearch">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="slogin" id="demo-name" value="" placeholder="Login" />
@@ -149,24 +149,24 @@ search">
 															<thead>
 																<tr>
 																	<th>Login/Nickname <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/login/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/login/desc">▼</a></th>
+adminsearch/login/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminsearch/login/desc">▼</a></th>
 																	<th>Ilosc gier <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/gamesplayed/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/gamesplayed/desc">▼</a></th>
+adminsearch/gamesplayed/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminsearch/gamesplayed/desc">▼</a></th>
 																	<th>Wygrane <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/wins/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/wins/desc">▼</a></th>
+adminsearch/wins/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminsearch/wins/desc">▼</a></th>
                                                                     <th>Przegrane <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/loses/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/loses/desc">▼</a></th>
+adminsearch/loses/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminsearch/loses/desc">▼</a></th>
                                                                     <th>Remisy <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/draws/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/draws/desc">▼</a></th>
+adminsearch/draws/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminsearch/draws/desc">▼</a></th>
                                                                     <th>Ranking <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/rankings/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-search/rankings/desc">▼</a></th>
-														
+adminsearch/rankings/asc">▲</a><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminsearch/rankings/desc">▼</a></th>
+                                                                    <th>Edycja</th>
 																</tr>
 															</thead>
 															<tbody>
@@ -192,7 +192,21 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
 </td>
                                                                 <td><?php echo $_smarty_tpl->tpl_vars['item']->value['rating'];?>
 </td>
-														 
+                                                                <td> <a class="actions" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+adminedit/<?php echo $_smarty_tpl->tpl_vars['item']->value['userid'];?>
+">
+											                    <input type="submit" value="Edytuj" class="primary" />
+										                        </a>
+                                                                
+                                                                <a class="actions" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+admindelete/<?php echo $_smarty_tpl->tpl_vars['item']->value['userid'];?>
+">
+											                    <input type="submit" value="Usuń" class="primary" />
+										                        </a>
+                                                                
+                                                                
+                                                                
+                                                                </td>    
                                                                 </tr>
 																
                                                                 <?php
@@ -215,12 +229,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "content"} */
 /* {block 'messages'} */
-class Block_10171712906740a0af1acc92_67673343 extends Smarty_Internal_Block
+class Block_151825520667409bf13afc29_03002947 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_10171712906740a0af1acc92_67673343',
+    0 => 'Block_151825520667409bf13afc29_03002947',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

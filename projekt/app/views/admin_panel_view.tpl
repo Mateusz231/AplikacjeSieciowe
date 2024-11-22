@@ -27,7 +27,7 @@
 
 
 {block name="content"}
-<form method="post" action="{$conf->action_root}search">
+<form method="post" action="{$conf->action_root}adminsearch">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="slogin" id="demo-name" value="" placeholder="Login" />
@@ -52,13 +52,13 @@
 														<table>
 															<thead>
 																<tr>
-																	<th>Login/Nickname <a href="{$conf->action_root}search/login/asc">▲</a><a href="{$conf->action_root}search/login/desc">▼</a></th>
-																	<th>Ilosc gier <a href="{$conf->action_root}search/gamesplayed/asc">▲</a><a href="{$conf->action_root}search/gamesplayed/desc">▼</a></th>
-																	<th>Wygrane <a href="{$conf->action_root}search/wins/asc">▲</a><a href="{$conf->action_root}search/wins/desc">▼</a></th>
-                                                                    <th>Przegrane <a href="{$conf->action_root}search/loses/asc">▲</a><a href="{$conf->action_root}search/loses/desc">▼</a></th>
-                                                                    <th>Remisy <a href="{$conf->action_root}search/draws/asc">▲</a><a href="{$conf->action_root}search/draws/desc">▼</a></th>
-                                                                    <th>Ranking <a href="{$conf->action_root}search/rankings/asc">▲</a><a href="{$conf->action_root}search/rankings/desc">▼</a></th>
-														
+																	<th>Login/Nickname <a href="{$conf->action_root}adminsearch/login/asc">▲</a><a href="{$conf->action_root}adminsearch/login/desc">▼</a></th>
+																	<th>Ilosc gier <a href="{$conf->action_root}adminsearch/gamesplayed/asc">▲</a><a href="{$conf->action_root}adminsearch/gamesplayed/desc">▼</a></th>
+																	<th>Wygrane <a href="{$conf->action_root}adminsearch/wins/asc">▲</a><a href="{$conf->action_root}adminsearch/wins/desc">▼</a></th>
+                                                                    <th>Przegrane <a href="{$conf->action_root}adminsearch/loses/asc">▲</a><a href="{$conf->action_root}adminsearch/loses/desc">▼</a></th>
+                                                                    <th>Remisy <a href="{$conf->action_root}adminsearch/draws/asc">▲</a><a href="{$conf->action_root}adminsearch/draws/desc">▼</a></th>
+                                                                    <th>Ranking <a href="{$conf->action_root}adminsearch/rankings/asc">▲</a><a href="{$conf->action_root}adminsearch/rankings/desc">▼</a></th>
+                                                                    <th>Edycja</th>
 																</tr>
 															</thead>
 															<tbody>
@@ -73,7 +73,17 @@
                                                                 <td>{$item['loses']}</td>
                                                                 <td>{$item['draws']}</td>
                                                                 <td>{$item['rating']}</td>
-														 
+                                                                <td> <a class="actions" href="{$conf->action_root}adminedit/{$item['userid']}">
+											                    <input type="submit" value="Edytuj" class="primary" />
+										                        </a>
+                                                                
+                                                                <a class="actions" href="{$conf->action_root}admindelete/{$item['userid']}">
+											                    <input type="submit" value="Usuń" class="primary" />
+										                        </a>
+                                                                
+                                                                
+                                                                
+                                                                </td>    
                                                                 </tr>
 																
                                                                 {/foreach}    
