@@ -35,38 +35,38 @@
 
 
 
-<form method="post" action="{$conf->action_root}adminedit">
+<form method="post" action="{$conf->action_root}admineditSave/{$dane->id}">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="elogin" id="demo-name" value="" placeholder="Login" />
+										<input type="text" name="elogin" id="demo-name" value="{$dane->login}" placeholder="Login" />
 									</div>
 								</br>
 									<div class="col-12 col-12-xsmall">
-										<input type="password" name="email" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="email" id="demo-email" value="{$dane->email}" placeholder="email" />
 									</div>
 
 									<div class="col-12 col-12-xsmall">
-										<input type="password" name="enickname" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="enickname" id="demo-email" value="{$dane->nickname}" placeholder="nickname" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="ecountry" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="ecountry" id="demo-email" value="{$dane->country}" placeholder="country" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="efirstname" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="efirstname" id="demo-email" value="{$dane->firstname}" placeholder="firstname" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="elastname" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="elastname" id="demo-email" value="{$dane->lastname}" placeholder="lastname" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="erating" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="erating" id="demo-email" value="{$dane->rating}" placeholder="rating" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="erole" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="erole" id="demo-email" value="{$dane->role}" placeholder="role" />
 									</div>
 
 

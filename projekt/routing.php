@@ -16,3 +16,4 @@ Utils::addRoute('search','RankingsCtrl');
 Utils::addRoute('adminsearch', 'AdminPanel');
 Utils::addRoute('adminedit', 'AdminPanel');
 Utils::addRoute('admindelete', 'AdminPanel');
+Utils::addRoute('admineditSave','AdminPanel');

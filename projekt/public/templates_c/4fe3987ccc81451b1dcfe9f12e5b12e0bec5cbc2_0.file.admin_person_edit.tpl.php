@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-11-22 17:54:22
+/* Smarty version 4.5.3, created on 2024-11-23 22:20:08
   from 'C:\xampp\htdocs\AplikacjeSieciowe\projekt\app\views\admin_person_edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_6740b73ec517f4_51036984',
+  'unifunc' => 'content_674247083f64a5_57780298',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4fe3987ccc81451b1dcfe9f12e5b12e0bec5cbc2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\projekt\\app\\views\\admin_person_edit.tpl',
-      1 => 1732294298,
+      1 => 1732396748,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6740b73ec517f4_51036984 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674247083f64a5_57780298 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19287977036740b73ec32327_81874065', 'header');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_861449273674247080f8c69_09499323', 'header');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11940681176740b73ec384c3_46785062', 'sidebar');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19274810674247081d9199_10627632', 'sidebar');
 ?>
 
 
@@ -41,7 +41,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11940681176740b73e
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_994652906740b73ec3a528_36119621', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1289504040674247081db008_67082635', "content");
 ?>
 
 
@@ -49,7 +49,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_994652906740b73ec3
 
 <section>
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8118894636740b73ec3b876_01030141', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2122619838674247081e09c9_41893633', 'messages');
 ?>
 
 
@@ -64,12 +64,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8118894636740b73ec
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "main.tpl");
 }
 /* {block 'header'} */
-class Block_19287977036740b73ec32327_81874065 extends Smarty_Internal_Block
+class Block_861449273674247080f8c69_09499323 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header' => 
   array (
-    0 => 'Block_19287977036740b73ec32327_81874065',
+    0 => 'Block_861449273674247080f8c69_09499323',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -82,12 +82,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'header'} */
 /* {block 'sidebar'} */
-class Block_11940681176740b73ec384c3_46785062 extends Smarty_Internal_Block
+class Block_19274810674247081d9199_10627632 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'sidebar' => 
   array (
-    0 => 'Block_11940681176740b73ec384c3_46785062',
+    0 => 'Block_19274810674247081d9199_10627632',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -117,12 +117,12 @@ MainPage">Strona główna</a></li>
 }
 /* {/block 'sidebar'} */
 /* {block "content"} */
-class Block_994652906740b73ec3a528_36119621 extends Smarty_Internal_Block
+class Block_1289504040674247081db008_67082635 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_994652906740b73ec3a528_36119621',
+    0 => 'Block_1289504040674247081db008_67082635',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -135,38 +135,47 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 
 <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-adminedit">
+admineditSave/<?php echo $_smarty_tpl->tpl_vars['dane']->value->id;?>
+">
 								<div class="row gtr-uniform">
 									<div class="col-12 col-12-xsmall">
-										<input type="text" name="elogin" id="demo-name" value="" placeholder="Login" />
+										<input type="text" name="elogin" id="demo-name" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->login;?>
+" placeholder="Login" />
 									</div>
 								</br>
 									<div class="col-12 col-12-xsmall">
-										<input type="password" name="email" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="email" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->email;?>
+" placeholder="email" />
 									</div>
 
 									<div class="col-12 col-12-xsmall">
-										<input type="password" name="enickname" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="enickname" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->nickname;?>
+" placeholder="nickname" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="ecountry" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="ecountry" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->country;?>
+" placeholder="country" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="efirstname" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="efirstname" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->firstname;?>
+" placeholder="firstname" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="elastname" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="elastname" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->lastname;?>
+" placeholder="lastname" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="erating" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="erating" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->rating;?>
+" placeholder="rating" />
 									</div>
 
                                     <div class="col-12 col-12-xsmall">
-										<input type="password" name="erole" id="demo-email" value="" placeholder="Password" />
+										<input type="text" name="erole" id="demo-email" value="<?php echo $_smarty_tpl->tpl_vars['dane']->value->role;?>
+" placeholder="role" />
 									</div>
 
 
@@ -187,12 +196,12 @@ adminedit">
 }
 /* {/block "content"} */
 /* {block 'messages'} */
-class Block_8118894636740b73ec3b876_01030141 extends Smarty_Internal_Block
+class Block_2122619838674247081e09c9_41893633 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_8118894636740b73ec3b876_01030141',
+    0 => 'Block_2122619838674247081e09c9_41893633',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
