@@ -11,6 +11,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
 		<link rel="icon" type="image/x-icon" href="{$conf->app_url}/assets/favicon.ico">
+		<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"
+/>
 
 		<style>
 		.alert-danger{

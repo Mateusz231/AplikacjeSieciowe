@@ -17,3 +17,4 @@ Utils::addRoute('adminsearch', 'AdminPanel');
 Utils::addRoute('adminedit', 'AdminPanel');
 Utils::addRoute('admindelete', 'AdminPanel');
 Utils::addRoute('admineditSave','AdminPanel');
+Utils::addRoute('profile','ProfileCtrl');
