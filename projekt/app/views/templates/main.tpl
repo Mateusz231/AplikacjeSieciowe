@@ -13,8 +13,10 @@
 		<link rel="icon" type="image/x-icon" href="{$conf->app_url}/assets/favicon.ico">
 		<link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"
-/>
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+  {block name="header2"}  {/block}
+ 
+
 
 		<style>
 		.alert-danger{
