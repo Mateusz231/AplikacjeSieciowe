@@ -11,12 +11,9 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-									
-									<li><a href="{$conf->action_root}MainPage">Strona główna</a></li>
 
-										
-	
-																	
+									<li><a href="{$conf->action_root}MainPage">Strona główna</a></li>
+														
 									</ul>
 								</nav>
 
@@ -34,11 +31,9 @@
 
 
 
-<form method="post" action="{$conf->action_root}admineditSave/{$dane->id}">
+<form method="post" action="{$conf->action_root}profileEditSave/{$dane->id}">
 								<div class="row gtr-uniform">
-									<div class="col-12 col-12-xsmall">
-										<input type="text" name="elogin" id="demo-name" value="{$dane->login}" placeholder="Login" />
-									</div>
+
 								</br>
 									<div class="col-12 col-12-xsmall">
 										<input type="text" name="email" id="demo-email" value="{$dane->email}" placeholder="email" />
@@ -60,14 +55,8 @@
 										<input type="text" name="elastname" id="demo-email" value="{$dane->lastname}" placeholder="lastname" />
 									</div>
 
-                                    <div class="col-12 col-12-xsmall">
-										<input type="text" name="erating" id="demo-email" value="{$dane->rating}" placeholder="rating" />
-									</div>
 
-                                    <div class="col-12 col-12-xsmall">
-										<input type="text" name="erole" id="demo-email" value="{$dane->role}" placeholder="role" />
-									</div>
-
+                              
 
 								</br>
 									

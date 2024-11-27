@@ -27,18 +27,13 @@
         integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
         crossorigin="anonymous"></script>
 
-<!-- Load chess.js first -->
-
-
-<!-- Load chessboard.js next -->
 <script src="{$conf->app_url}/assets/chessboardjs-1.0.0/js/chessboard-1.0.0.min.js"></script>
 <script src="{$conf->app_url}/assets/chess-0.10.2/chess-0.10.2.min.js"></script>
-<!-- Your custom script goes last -->
 
 
 {/block}
 {block name=content}
-<div id="myBoard" style="width: 400px"></div>
+<div id="myBoard" style="width: 600px"></div>
 <script src="{$conf->app_url}/assets/abc.js"></script>
 
 

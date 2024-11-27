@@ -38,6 +38,14 @@
  {/foreach}  
 
  <img src="{$conf->action_root}/assets/bN.png">
+
+
+ {if $edit}
+ <br>
+ <a class="actions" href="{$conf->action_root}profileEdit/{$id}">
+ <input type="submit" value="Edytuj" class="primary" />
+ </a>
+ {/if}
 </div>
 
 

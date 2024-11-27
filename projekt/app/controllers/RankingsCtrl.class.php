@@ -95,6 +95,7 @@ class RankingsCtrl{
             $this->table = App::getDB()->select("rankings", [
                 "[>]users" => ["users_userid" => "userid"]
             ], [
+                "users.userid",
                 "rankings.gamesplayed",
                 "rankings.wins",
                 "rankings.loses",

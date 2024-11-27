@@ -16,16 +16,161 @@ class ProfileCtrl{
     private $form;
     private $data;
     private $games;
-
+    private $canedit = false;
+    private $id;
 
     public function __construct(){
     $this->form = new PersonEditForm();
     }
 
 
+    public function profileValidateSave(){
+
+        $this->form->email = ParamUtils::getFromRequest('email', true, 'Błędne wywołanie aplikacji');
+        $this->form->nickname = ParamUtils::getFromRequest('enickname', true, 'Błędne wywołanie aplikacji');
+        $this->form->country = ParamUtils::getFromRequest('ecountry', true, 'Błędne wywołanie aplikacji');
+        $this->form->firstname = ParamUtils::getFromRequest('efirstname', true, 'Błędne wywołanie aplikacji');
+        $this->form->lastname = ParamUtils::getFromRequest('elastname', true, 'Błędne wywołanie aplikacji');
+
+            
+        try {
+            
+            $record = App::getDB()->get("users", "login", [
+                "login" => $this->form->login
+            ]);
+
+
+            $record2 = App::getDB()->get("users","email",[
+            "email" => $this->form->email
+            ]);
+
+
+            $record3 = App::getDB()->get("users","nickname",[
+            "nickname"=>$this->form->nickname        
+            ]);
+
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        return !App::getMessages()->isError();
+
+
+        }
+
+     
+      
+    
+
+
+    public function action_profileEditSave(){
+
+    if($this->profileValidateSave()){
+        $this->form->id = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');
+        $this->id = SessionUtils::Load("id",true);
+            try{
+                
+
+                App::getDB()->update("users", [
+                    "email" => $this->form->email,
+                    "nickname" => $this->form->nickname,
+                    "country" => $this->form->country,
+                    "firstname" =>$this->form->firstname,
+                    "lastname" =>$this->form->lastname,
+                    "last_modified" => Date("Y-m-d h:i:sa"),
+                    "who_modified" =>$this->id
+
+    
+                ],[
+
+                  "userid" => $this->form->id      
+                    
+
+                 ]);
+
+
+
+            }
+
+            catch(\PDOException $e){
+                Utils::addErrorMessage("Wystąpił błąd podczas zmiany rekordów");
+            }
+
+
+        
+        Utils::addInfoMessage("Pomyślnie zapisano zmiany");
+        $this->action_profile();
+    }
+
+    }
+   
+
+    
+
+    public function action_profileEdit(){
+
+    $this->url[0] = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');    
+    $this->id = SessionUtils::Load("id",true);
+    if($this->id == $this->url[0]){
+        
+        try {
+               
+            $record = App::getDB()->get("users", "*", [
+                "userid" => $this->id
+            ]);
+
+  
+            $this->form->id = $record['userid'];
+            $this->form->login = $record['login'];
+            $this->form->email = $record['email'];
+            $this->form->nickname = $record['nickname'];
+            $this->form->country = $record['country'];
+            $this->form->firstname = $record['firstname'];
+            $this->form->lastname = $record['lastname'];
+
+        
+
+     
+
+
+    } catch (\PDOException $e) {
+        Utils::addErrorMessage('Wystąpił błąd podczas edycji rekordu');
+        if (App::getConf()->debug)
+            Utils::addErrorMessage($e->getMessage());
+    }
+
+
+
+
+
+
+
+
+
+
+    }   
+    else{
+        App::getRouter()->forwardTo('MainPage');    
+    }  
+
+
+
+
+
+    $this->generateEditView();
+
+    }
+
+
     public function action_profile(){
 
     $this->url[0] = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');
+
+    $this->id = SessionUtils::Load("id",true);
+    if($this->id == $this->url[0]){
+        $this->canedit=true;
+    }    
 
 
     try {
@@ -105,9 +250,18 @@ class ProfileCtrl{
 
     }
 
+    public function generateEditView(){
+        App::getSmarty()->assign('dane',$this->form);
+        App::getSmarty()->assign('page_header','Edytuj dane ');
+        App::getSmarty()->assign('page_title','Edycja');
+        App::getSmarty()->display('profile_edit_view.tpl');     
+
+    }
+
 
     public function generateView(){
-       // var_dump($this->games);
+        App::getSmarty()->assign('id',$this->id);
+        App::getSmarty()->assign('edit',$this->canedit);
         App::getSmarty()->assign("tabela2",[$this->data]);
         App::getSmarty()->assign("tabela3",$this->games);
         App::getSmarty()->assign('page_header','Profil ');

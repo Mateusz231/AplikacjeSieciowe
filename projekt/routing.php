@@ -19,3 +19,6 @@ Utils::addRoute('admindelete', 'AdminPanel');
 Utils::addRoute('admineditSave','AdminPanel');
 Utils::addRoute('profile','ProfileCtrl');
 Utils::addRoute('play','Chess');
+Utils::addRoute('news','NewsCtrl');
+Utils::addRoute('profileEdit','ProfileCtrl');
+Utils::addRoute('profileEditSave','ProfileCtrl');

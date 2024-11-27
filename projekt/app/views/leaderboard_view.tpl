@@ -67,7 +67,8 @@
                                                                 
                                                                 {foreach $tabela as $item} 
                                                                 <tr>       
-                                                                <td>{$item['login']}</td>        
+                                                                <td><a href="{$conf->action_root}profile/{$item['userid']}"> {$item['login']} </a></td> 
+																    
                                                                 <td>{$item['gamesplayed']}</td>
                                                                 <td>{$item['wins']}</td>
                                                                 <td>{$item['loses']}</td>
