@@ -1,10 +1,8 @@
 {extends file="main.tpl"}
 
-
 {block name=header}
 <p>{$page_header}</p>
 {/block}
-
 
 {block name=sidebar}
 <nav id="menu">
@@ -24,25 +22,30 @@
 {/block}
 	
 
-
 {block name=content}
-{if \core\RoleUtils::inRole("moderator")}
-    <br> 
-	<button ><a href="{$conf->action_root}addpost">Dodaj post</a></button>
+<form method="post" action="{$conf->action_root}savepost">
+								<div class="row gtr-uniform">
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="title" id="demo-name" value="" placeholder="Tytuł" />
+									</div>
+								</br>
+									<div class="col-12 col-12-xsmall">
+										<textarea name="content" id="demo-email" value="" placeholder="Treść" ></textarea>
+									</div>
 
-	{/if}	
+						
 
 
-{foreach $tabela as $item}
+								</br>
+									
 
-<h2>{$item['title']}</h2>
-<h6>{$item['date']}</h6>
-<br>
-<div class="box">{$item['post']}</div>
-<br><br>
-
-{/foreach}
-
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Zapisz post" class="primary" /></li>
+										</ul>
+									</div>
+								</div>
+</form>
 
 <section>
 	

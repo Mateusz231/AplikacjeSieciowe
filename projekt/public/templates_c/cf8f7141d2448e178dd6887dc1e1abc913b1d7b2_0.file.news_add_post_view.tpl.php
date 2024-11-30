@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-11-30 19:26:51
-  from 'C:\xampp\htdocs\AplikacjeSieciowe\projekt\app\views\news.tpl' */
+/* Smarty version 4.5.3, created on 2024-11-30 19:28:02
+  from 'C:\xampp\htdocs\AplikacjeSieciowe\projekt\app\views\news_add_post_view.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_674b58eb2ce4f6_53069921',
+  'unifunc' => 'content_674b5932c0d392_17391456',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '26df8abff5b421c5c4111fba69b341b06243a048' => 
+    'cf8f7141d2448e178dd6887dc1e1abc913b1d7b2' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\projekt\\app\\views\\news.tpl',
-      1 => 1732991189,
+      0 => 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\projekt\\app\\views\\news_add_post_view.tpl',
+      1 => 1732991190,
       2 => 'file',
     ),
   ),
@@ -20,28 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b58eb2ce4f6_53069921 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674b5932c0d392_17391456 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
-
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2060317250674b58eb29caf2_00872887', 'header');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1531683803674b5932bf5d02_95750530', 'header');
 ?>
 
 
-
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1287098446674b58eb2a30b2_94010567', 'sidebar');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_927803194674b5932bfb770_60235174', 'sidebar');
 ?>
 
 	
 
-
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_541002616674b58eb2a49c4_85508343', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_300857661674b5932bfcd46_29742533', 'content');
 ?>
 
 
@@ -49,12 +46,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_541002616674b58eb2
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "main.tpl");
 }
 /* {block 'header'} */
-class Block_2060317250674b58eb29caf2_00872887 extends Smarty_Internal_Block
+class Block_1531683803674b5932bf5d02_95750530 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header' => 
   array (
-    0 => 'Block_2060317250674b58eb29caf2_00872887',
+    0 => 'Block_1531683803674b5932bf5d02_95750530',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -67,12 +64,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'header'} */
 /* {block 'sidebar'} */
-class Block_1287098446674b58eb2a30b2_94010567 extends Smarty_Internal_Block
+class Block_927803194674b5932bfb770_60235174 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'sidebar' => 
   array (
-    0 => 'Block_1287098446674b58eb2a30b2_94010567',
+    0 => 'Block_927803194674b5932bfb770_60235174',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -98,45 +95,41 @@ MainPage">Strona główna</a></li>
 }
 /* {/block 'sidebar'} */
 /* {block 'content'} */
-class Block_541002616674b58eb2a49c4_85508343 extends Smarty_Internal_Block
+class Block_300857661674b5932bfcd46_29742533 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_541002616674b58eb2a49c4_85508343',
+    0 => 'Block_300857661674b5932bfcd46_29742533',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-<?php if (\core\RoleUtils::inRole("moderator")) {?>
-    <br> 
-	<button ><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-addpost">Dodaj post</a></button>
+<form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+savepost">
+								<div class="row gtr-uniform">
+									<div class="col-12 col-12-xsmall">
+										<input type="text" name="title" id="demo-name" value="" placeholder="Tytuł" />
+									</div>
+								</br>
+									<div class="col-12 col-12-xsmall">
+										<textarea name="content" id="demo-email" value="" placeholder="Treść" ></textarea>
+									</div>
 
-	<?php }?>	
+						
 
 
-<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tabela']->value, 'item');
-$_smarty_tpl->tpl_vars['item']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
-$_smarty_tpl->tpl_vars['item']->do_else = false;
-?>
+								</br>
+									
 
-<h2><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
-</h2>
-<h6><?php echo $_smarty_tpl->tpl_vars['item']->value['date'];?>
-</h6>
-<br>
-<div class="box"><?php echo $_smarty_tpl->tpl_vars['item']->value['post'];?>
-</div>
-<br><br>
-
-<?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Zapisz post" class="primary" /></li>
+										</ul>
+									</div>
+								</div>
+</form>
 
 <section>
 	
