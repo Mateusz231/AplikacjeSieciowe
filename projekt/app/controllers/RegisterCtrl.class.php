@@ -58,7 +58,7 @@ class RegisterCtrl{
             $record=null;
 
             try {
-                // 2. odczyt z bazy danych osoby o podanym ID (tylko jednego rekordu)
+            
                 $record = App::getDB()->get("users", "login", [
                     "login" => $this->form->login
                 ]);
