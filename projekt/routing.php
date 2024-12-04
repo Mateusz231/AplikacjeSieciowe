@@ -9,6 +9,7 @@ App::getRouter()->setLoginRoute('loginShow'); // akcja/ścieżka na potrzeby log
 Utils::addRoute('MainPage', 'MainPage');
 Utils::addRoute('register','RegisterCtrl');
 Utils::addRoute('doLogin','LoginCtrl');
+Utils::addRoute('RegisterShow','RegisterCtrl');
 Utils::addRoute('loginShow','LoginCtrl');
 Utils::addRoute('logout','LoginCtrl',['user','admin','moderator']);
 Utils::addRoute('search','RankingsCtrl',['admin','moderator','user']);

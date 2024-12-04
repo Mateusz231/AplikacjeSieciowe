@@ -9,6 +9,7 @@ use core\Utils;
 use core\RoleUtils;
 use core\SessionUtils;
 use core\ParamUtils;
+use core\Validator;
 
 
 class RankingsCtrl{
@@ -17,11 +18,11 @@ class RankingsCtrl{
     private $loginsearch;
     private $rankingsearch;
     private $orderparam;
+    private $validator;
 
 
     public function __construct(){
-
-
+        $this->validator = new Validator();   
     }
 
 
@@ -31,15 +32,22 @@ class RankingsCtrl{
     
     public function action_search(){
 
-        $this->loginsearch = ParamUtils::getFromRequest('slogin');
-        $this->rankingsearch = ParamUtils::getFromRequest('srank');
+        $this->loginsearch = $this->validator->validateFromRequest("slogin",
+        [
+        'trim' => true,
+        ]);
+
+        $this->rankingsearch = $this->validator->validateFromRequest("srank",
+        [
+        'trim' => true,
+        ]);
 
         $column;
         $direction;
 
       
 
-        $this->orderparam[0] = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');
+        $this->orderparam[0] = $this->validator->validateFromCleanURL(1);
         if($this->orderparam[0] == "login"){
             $column="users.login";
         }
@@ -62,7 +70,7 @@ class RankingsCtrl{
         if($this->orderparam[0] == "rankings"){
             $column="rankings.rating";
         }
-        $this->orderparam[1] = ParamUtils::getFromCleanURL(2, false, 'Błędne wywolanie aplikacji');
+        $this->orderparam[1] =  $this->validator->validateFromCleanURL(2);
         if($this->orderparam[1] =="asc"){
             $direction="ASC";
         }

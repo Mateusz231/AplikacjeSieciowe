@@ -25,15 +25,10 @@ public function action_play(){
     $this->generateView();
 }
 
-
-
 public function generateView(){
 
     App::getSmarty()->assign('page_title','Graj');
     App::getSmarty()->display('chess_page.tpl');   
-
-
-
 
 }
 

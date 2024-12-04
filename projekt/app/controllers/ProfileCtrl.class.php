@@ -8,7 +8,7 @@ use core\RoleUtils;
 use core\SessionUtils;
 use core\ParamUtils;
 use app\forms\PersonEditForm;
-
+use core\Validator;
 
 class ProfileCtrl{
 
@@ -18,19 +18,56 @@ class ProfileCtrl{
     private $games;
     private $canedit = false;
     private $id;
+    private $validator;
 
     public function __construct(){
     $this->form = new PersonEditForm();
+    $this->validator = new Validator();   
     }
 
 
     public function profileValidateSave(){
 
-        $this->form->email = ParamUtils::getFromRequest('email', true, 'Błędne wywołanie aplikacji');
-        $this->form->nickname = ParamUtils::getFromRequest('enickname', true, 'Błędne wywołanie aplikacji');
-        $this->form->country = ParamUtils::getFromRequest('ecountry', true, 'Błędne wywołanie aplikacji');
-        $this->form->firstname = ParamUtils::getFromRequest('efirstname', true, 'Błędne wywołanie aplikacji');
-        $this->form->lastname = ParamUtils::getFromRequest('elastname', true, 'Błędne wywołanie aplikacji');
+    
+        $this->form->email = $this->validator->validateFromRequest('email',
+        [
+            'trim' => true,
+      //      "email" => true,
+            'max_length' => 45,
+            'validator_message' => 'email max 45 znaków',
+        ]);
+
+        $this->form->nickname = $this->validator->validateFromRequest('enickname',
+        [
+            'trim' => true,
+            'max_length' => 45,
+            'validator_message' => 'nickname max 45 znaków',
+        ]);
+
+        $this->form->country = $this->validator->validateFromRequest('ecountry',
+        [
+            'trim' => true,
+            'max_length' => 50,
+            'validator_message' => 'country(kraj) max 45 znaków',
+        ]);
+
+        $this->form->firstname = $this->validator->validateFromRequest('efirstname',
+        [
+            'trim' => true,
+            'max_length' => 45,
+            'validator_message' => 'firstname max 45 znaków',
+        ]);
+
+        $this->form->lastname = $this->validator->validateFromRequest('elastname',
+        [
+            'trim' => true,
+            'max_length' => 55,
+            'validator_message' => 'lastname max 55 znaków',
+        ]);
+    
+    
+
+     
 
             
         try {
@@ -67,8 +104,16 @@ class ProfileCtrl{
     public function action_profileEditSave(){
 
     if($this->profileValidateSave()){
-        $this->form->id = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');
+    
+        $this->form->id = $this->validator->validateFromCleanURL(1,['int' => true, 'validator_message' => 'Niepoprawna liczba całkowita' ]);
+        if(!$this->validator->isLastOK()){
+            App::getRouter()->forwardTo("MainPage");
+        }   
         $this->id = SessionUtils::Load("id",true);
+        if($this->id != $this->form->id){
+            Utils::addErrorMessage('Nieprawidlowy identyfikator');
+            App::getRouter()->forwardTo("MainPage");   
+        } 
             try{
                 
 
@@ -93,6 +138,7 @@ class ProfileCtrl{
 
             }
 
+
             catch(\PDOException $e){
                 Utils::addErrorMessage("Wystąpił błąd podczas zmiany rekordów");
             }
@@ -102,6 +148,7 @@ class ProfileCtrl{
         Utils::addInfoMessage("Pomyślnie zapisano zmiany");
         $this->action_profile();
     }
+    $this->action_profile();
 
     }
    
@@ -110,7 +157,10 @@ class ProfileCtrl{
 
     public function action_profileEdit(){
 
-    $this->url[0] = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');    
+    $this->url[0] = $this->validator->validateFromCleanURL(1,['int' => true, 'validator_message' => 'Niepoprawna liczba całkowita' ]);
+    if(!$this->validator->isLastOK()){
+        App::getRouter()->forwardTo("MainPage");
+    }   
     $this->id = SessionUtils::Load("id",true);
     if($this->id == $this->url[0]){
         
@@ -151,6 +201,7 @@ class ProfileCtrl{
 
     }   
     else{
+        Utils::addErrorMessage('Nie twój identyfikator');
         App::getRouter()->forwardTo('MainPage');    
     }  
 
@@ -165,7 +216,11 @@ class ProfileCtrl{
 
     public function action_profile(){
 
-    $this->url[0] = ParamUtils::getFromCleanURL(1, false, 'Błędne wywołanie aplikacji');
+    $this->url[0] = $this->validator->validateFromCleanURL(1,['int' => true, 'validator_message' => 'Niepoprawna liczba całkowita' ]);
+
+    if(!$this->validator->isLastOK()){
+        App::getRouter()->forwardTo("MainPage");
+    }    
 
     $this->id = SessionUtils::Load("id",true);
     if($this->id == $this->url[0]){
@@ -183,6 +238,11 @@ class ProfileCtrl{
         $record2 = App::getDB()->get("rankings", "*", [
             "users_userid" => $this->url[0]
         ]);
+
+        if(empty($record)){
+            Utils::addErrorMessage("Niepoprawny identyfikator profilu!");
+            App::getRouter()->forwardTo("MainPage");
+        }
 
 
         $this->data = [
@@ -269,6 +329,8 @@ class ProfileCtrl{
         App::getSmarty()->display('profile_view.tpl');     
         
     }
+
+
 
 
 

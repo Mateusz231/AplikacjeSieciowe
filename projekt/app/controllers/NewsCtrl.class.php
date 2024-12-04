@@ -8,6 +8,7 @@ use core\RoleUtils;
 use core\SessionUtils;
 use core\ParamUtils;
 use app\forms\PersonEditForm;
+use core\Validator;
 
 
 class NewsCtrl{
@@ -16,10 +17,11 @@ class NewsCtrl{
     private $title;
     private $content; 
     private $id;
+    private $validator;
 
 
 public function __construct(){
-
+    $this->validator = new Validator(); 
 }
 
 
@@ -29,19 +31,25 @@ $this->post_add_view();
 
 public function validate(){
 
-    $this->title = ParamUtils::getFromRequest('title');
-    $this->content = ParamUtils::getFromRequest('content');
+    $this->title= $this->validator->validateFromRequest("title",
+    [
+    'trim' => true,
+    'required' => true,
+    'required_message' => 'Nie podano tytułu',
+    'min_length' => 10,
+    'max_length' => 255,
+    'validator_message' => 'Co najmniej 10 znaków, max 255',
+    ]);
 
-    if(!(isset($this->title))){
-        return false;
-    }
-
-    if(empty($this->title)){
-        Utils::addErrorMessage("Nie podano tytułu"); 
-     }
-     if(empty($this->content)){
-         Utils::addErrorMessage("Nie podano treści");
-     }
+    $this->content= $this->validator->validateFromRequest("content",
+    [
+    'trim' => true,
+    'required' => true,
+    'required_message' => 'Nie podano treści',
+    'min_length' => 1,
+    'max_length' => 4294967295,
+    'validator_message' => 'Co najmniej 1 znaków, max 4GB',
+    ]);
 
      return !App::getMessages()->isError();
 

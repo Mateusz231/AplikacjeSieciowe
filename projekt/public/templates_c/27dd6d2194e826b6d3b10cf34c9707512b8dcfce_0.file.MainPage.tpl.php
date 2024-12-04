@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.3, created on 2024-11-25 19:00:17
+/* Smarty version 4.5.3, created on 2024-12-04 16:47:54
   from 'C:\xampp\htdocs\AplikacjeSieciowe\projekt\app\views\MainPage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.3',
-  'unifunc' => 'content_6744bb31be29e4_17425922',
+  'unifunc' => 'content_675079aa62e8f5_54363752',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '27dd6d2194e826b6d3b10cf34c9707512b8dcfce' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\projekt\\app\\views\\MainPage.tpl',
-      1 => 1732547165,
+      1 => 1733327267,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6744bb31be29e4_17425922 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675079aa62e8f5_54363752 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,23 +28,23 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13016276396744bb31bcae95_23018351', 'sidebar');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1962118610675079aa2d1c69_90910084', 'sidebar');
 ?>
 
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17696729896744bb31be1f07_29962307', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_384899494675079aa4d8e33_54605066', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "main.tpl");
 }
 /* {block 'sidebar'} */
-class Block_13016276396744bb31bcae95_23018351 extends Smarty_Internal_Block
+class Block_1962118610675079aa2d1c69_90910084 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'sidebar' => 
   array (
-    0 => 'Block_13016276396744bb31bcae95_23018351',
+    0 => 'Block_1962118610675079aa2d1c69_90910084',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -62,7 +62,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 									<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 loginShow">Zaloguj</a></li>
 									<li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-register">Zarejestruj sie</a></li>
+RegisterShow">Zarejestruj sie</a></li>
 
 
 									<?php }?>	
@@ -102,23 +102,41 @@ adminsearch">Panel admina</a></li>
 }
 /* {/block 'sidebar'} */
 /* {block 'content'} */
-class Block_17696729896744bb31be1f07_29962307 extends Smarty_Internal_Block
+class Block_384899494675079aa4d8e33_54605066 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_17696729896744bb31be1f07_29962307',
+    0 => 'Block_384899494675079aa4d8e33_54605066',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod ut leo eget tempor. Mauris egestas leo vel lectus facilisis, in condimentum ipsum iaculis. Vivamus blandit non nibh in lacinia. Nulla facilisi. Nam sodales enim et mauris rhoncus varius. Nunc congue tellus id nulla aliquet venenatis. Nam sed sagittis ipsum.
+  <h1>Witamy w naszej aplikacji szachowej!</h1>
+    <p>Rozwijaj swoje umiejętności, rywalizuj z innymi graczami i zdobywaj ranking. Zapraszamy do gry!</p>
 
-Sed vestibulum mauris sit amet dolor consectetur elementum. Nulla facilisi. Duis a viverra erat. Cras vel cursus est. Proin ac luctus justo. Praesent vitae interdum ante, a condimentum tortor. Fusce pretium posuere tortor. Nullam sit amet ex faucibus, elementum sapien vel, tristique lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla at odio nec erat hendrerit vulputate eu in elit. Sed laoreet purus vitae magna cursus, at pellentesque nulla aliquet. Nullam accumsan vitae massa et iaculis. Fusce congue bibendum mauris eget tincidunt. Phasellus fringilla pellentesque sem ultricies mattis.
 
-Cras eleifend ac dolor sit amet varius. Nam sagittis augue vel risus tristique tempor. Integer consectetur lobortis sem, quis vulputate mauris consequat in. Vestibulum bibendum pulvinar tempor. Curabitur tempor nulla consectetur sapien ultricies commodo. Suspendisse interdum tincidunt odio, euismod imperdiet erat vestibulum ut. Nulla tempus congue orci, nec malesuada nisl volutpat in. Integer porta scelerisque dolor id lobortis. Duis gravida, nunc sed accumsan sodales, magna orci auctor elit, sed molestie leo dolor id arcu. Nulla cursus ex quis leo tincidunt suscipit. Etiam et tempus libero, in finibus tellus. Nunc velit orci, dictum sit amet ligula nec, fringilla mollis augue. 
+<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isMessage()) {?>
+<div class="alert alert-danger">
+	<ul>
+	<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');
+$_smarty_tpl->tpl_vars['msg']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
+$_smarty_tpl->tpl_vars['msg']->do_else = false;
+?>
+	<li class="msg <?php if ($_smarty_tpl->tpl_vars['msg']->value->isError()) {?>error<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isWarning()) {?>warning<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isInfo()) {?>info<?php }?>"><?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+</li>
+	<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+	</ul>
+</div>
+<?php }?>
+
+
 
 <?php
 }
