@@ -49,62 +49,91 @@
 
 
 <div class="table-wrapper">
-														<table>
-															<thead>
-																<tr>
-																	<th>Login/Nickname <a href="{$conf->action_root}search/login/asc">▲</a><a href="{$conf->action_root}search/login/desc">▼</a></th>
-																	<th>Ilosc gier <a href="{$conf->action_root}search/gamesplayed/asc">▲</a><a href="{$conf->action_root}search/gamesplayed/desc">▼</a></th>
-																	<th>Wygrane <a href="{$conf->action_root}search/wins/asc">▲</a><a href="{$conf->action_root}search/wins/desc">▼</a></th>
-                                                                    <th>Przegrane <a href="{$conf->action_root}search/loses/asc">▲</a><a href="{$conf->action_root}search/loses/desc">▼</a></th>
-                                                                    <th>Remisy <a href="{$conf->action_root}search/draws/asc">▲</a><a href="{$conf->action_root}search/draws/desc">▼</a></th>
-                                                                    <th>Ranking <a href="{$conf->action_root}search/rankings/asc">▲</a><a href="{$conf->action_root}search/rankings/desc">▼</a></th>
+	<table>
+    	<thead>
+		    <tr>
+		    	<th>Login/Nickname 
+    			<a href="{$conf->action_root}search/login/asc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▲</a>
+				<a href="{$conf->action_root}search/login/desc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▼</a>
+			</th>
+			<th>Ilosc gier 
+    		<a href="{$conf->action_root}search/gamesplayed/asc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▲</a>
+			<a href="{$conf->action_root}search/gamesplayed/desc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▼</a>
+			</th>
+			<th>Wygrane 
+<a href="{$conf->action_root}search/wins/asc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▲</a>
+<a href="{$conf->action_root}search/wins/desc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▼</a>
+			</th>
+
+
+			<th>Przegrane
+<a href="{$conf->action_root}search/loses/asc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▲</a>
+<a href="{$conf->action_root}search/loses/desc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▼</a>
+			</th>
+
+			<th>Remisy
+<a href="{$conf->action_root}search/draws/asc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▲</a>
+<a href="{$conf->action_root}search/draws/desc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▼</a>
+			</th>
+
+			
+
+			<th>Ranking 
+<a href="{$conf->action_root}search/rankings/asc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▲</a>
+<a href="{$conf->action_root}search/rankings/desc/{$current_page}/{$slogin|default:''}/{$srank|default:''}">▼</a>
+			</th>
 														
-																</tr>
-															</thead>
-															<tbody>
+			</tr>
+		</thead>
+	<tbody>
 																
 
-                                                                
-                                                                {foreach $tabela as $item} 
-                                                                <tr>       
-                                                                <td><a href="{$conf->action_root}profile/{$item['userid']}"> {$item['login']} </a></td> 
+                          {foreach $tabela as $item} 
+                          <tr>       
+                          <td><a href="{$conf->action_root}profile/{$item['userid']}"> {$item['login']} </a></td> 
 																    
-                                                                <td>{$item['gamesplayed']}</td>
-                                                                <td>{$item['wins']}</td>
-                                                                <td>{$item['loses']}</td>
-                                                                <td>{$item['draws']}</td>
-                                                                <td>{$item['rating']}</td>
-														 
-                                                                </tr>
-																
-                                                                {/foreach}    
+                          <td>{$item['gamesplayed']}</td>
+                          <td>{$item['wins']}</td>
+                          <td>{$item['loses']}</td>
+                          <td>{$item['draws']}</td>
+						  <td>{$item['rating']}</td>
+            			 </tr>										
+                         {/foreach}    
                                                                 
                                                                 
-
-															</tbody>
+		</tbody>
 														
-														</table>
+	</table>
 
 														
-													</div>
+</div>
 
 
 
 <ul class="pagination">
-														<li><span class="button disabled">Prev</span></li>
-														<li><a href="#" class="page active">1</a></li>
-														<li><a href="#" class="page">2</a></li>
-														<li><a href="#" class="page">3</a></li>
-														<li><span>&hellip;</span></li>
-														<li><a href="#" class="page">8</a></li>
-														<li><a href="#" class="page">9</a></li>
-														<li><a href="#" class="page">10</a></li>
-														<li><a href="#" class="button">Next</a></li>
-													</ul>
+   {if $current_page > 1}
+    <li><a href="{$conf->action_root}search/{$URL[0]}/{$URL[1]}/{$current_page-1}/{$slogin|default:''}/{$srank|default:''}" class="button">Prev</a></li>
+{else}
+    <li><span class="button disabled">Prev</span></li>
+{/if}
 
+{for $i=1 to $total_pages}
+    {if $i == $current_page}
+        <li><a href="#" class="page active">{$i}</a></li>
+    {else}
+        <li><a href="{$conf->action_root}search/{$URL[0]}/{$URL[1]}/{$i}/{$slogin|default:''}/{$srank|default:''}" class="page">{$i}</a></li>
+    {/if}
+{/for}
 
-
-
+{if $current_page < $total_pages}
+    <li><a href="{$conf->action_root}search/{$URL[0]}/{$URL[1]}/{$current_page+1}/{$slogin|default:''}/{$srank|default:''}" class="button">Next</a></li>
+{else}
+    <li><span class="button disabled">Next</span></li>
+{/if}
+</ul>              
+														 
+                         
+			
 
 
 
