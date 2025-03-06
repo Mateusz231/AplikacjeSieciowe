@@ -30,18 +30,19 @@
     <br> 
 	<button ><a href="{$conf->action_root}addpost">Dodaj post</a></button>
 
-	{/if}	
+	{/if}
+
+	<form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->action_root}refreshNews','News'); return false;">
+	<fieldset>
+		<button type="submit">Odswież</button>
+	</fieldset>
+</form>	
 
 
-{foreach $tabela as $item}
 
-<h2>{$item['title']}</h2>
-<h6>{$item['date']}</h6>
-<br>
-<div class="box">{$item['post']}</div>
-<br><br>
-
-{/foreach}
+<div id="News">
+{include file="PostsTable.tpl"}
+</div>
 
 
 <section>

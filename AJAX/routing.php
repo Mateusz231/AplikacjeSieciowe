@@ -20,6 +20,7 @@ Utils::addRoute('admineditSave','AdminPanel',['admin']);
 Utils::addRoute('profile','ProfileCtrl',['user','admin','moderator']);
 Utils::addRoute('play','Chess',['admin','user','moderator']);
 Utils::addRoute('news','NewsCtrl',['moderator','user','admin']);
+Utils::addRoute('refreshNews','NewsCtrl',['moderator','user','admin']);
 Utils::addRoute('profileEdit','ProfileCtrl',['user','admin','moderator']);
 Utils::addRoute('profileEditSave','ProfileCtrl',['user','admin','moderator']);
 Utils::addRoute('addpost','NewsCtrl',['moderator']);

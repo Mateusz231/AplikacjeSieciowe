@@ -56,7 +56,7 @@ public function validate(){
 }
 
 
-public function action_news(){
+public function load_news_data(){
 
 
     try {
@@ -76,8 +76,9 @@ public function action_news(){
             Utils::addErrorMessage($e->getMessage());
     }
 
-    $this->generateView();
+    
 }
+
 
 public function action_savepost(){
 
@@ -119,7 +120,15 @@ public function post_add_view(){
 }
 
 
-public function generateView(){
+public function action_refreshNews(){
+    $this->load_news_data(); 
+    App::getSmarty()->assign('tabela',$this->table);
+    App::getSmarty()->display('PostsTable.tpl');  
+}
+
+
+public function action_news(){
+    $this->load_news_data();
     App::getSmarty()->assign('tabela',$this->table);
     App::getSmarty()->assign('page_header','Wiadomości');
     App::getSmarty()->assign('page_title','Wiadomości');
