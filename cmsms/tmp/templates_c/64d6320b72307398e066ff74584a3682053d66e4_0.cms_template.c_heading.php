@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2025-03-10 00:10:50
+/* Smarty version 3.1.31, created on 2025-03-11 10:52:07
   from "cms_template:c_heading" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_67ce1ffa3b7f04_16610319',
+  'unifunc' => 'content_67d007c7555027_26863214',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '64d6320b72307398e066ff74584a3682053d66e4' => 
     array (
       0 => 'cms_template:c_heading',
-      1 => '1741561811',
+      1 => '1741686725',
       2 => 'cms_template',
     ),
   ),
@@ -23,19 +23,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'cms_template:c_leaderboard' => 1,
   ),
 ),false)) {
-function content_67ce1ffa3b7f04_16610319 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67d007c7555027_26863214 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_function_title')) require_once 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\cmsms\\lib\\plugins\\function.title.php';
 ?>
 <div id="main-wrapper">
-					<div class="wrapper style1">
-						<div class="inner">
-
-							<!-- Feature 1 -->
-								<section class="container box feature1">
-									<div class="row">
-										<div class="col-12">
-											<header class="first major">
-<section>
 
 <?php ob_start();
 echo smarty_function_title(array(),$_smarty_tpl);
@@ -46,7 +37,29 @@ $_smarty_tpl->_assignInScope('title', $_prefixVariable1);
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['title']->value;
 $_prefixVariable2=ob_get_clean();
-if ($_prefixVariable2 == 'Graj') {?>
+if ($_prefixVariable2 == 'Wiadomości') {
+echo News::function_plugin(array('number'=>"3",'summarytemplate'=>"c_summary"),$_smarty_tpl);?>
+
+<?php }?>
+ 
+
+
+
+					<div class="wrapper style1">
+						<div class="inner">
+
+							<!-- Feature 1 -->
+								<section class="container box feature1">
+									<div class="row">
+										<div class="col-12">
+											<header class="first major">
+<section>
+
+
+<?php ob_start();
+echo $_smarty_tpl->tpl_vars['title']->value;
+$_prefixVariable3=ob_get_clean();
+if ($_prefixVariable3 == 'Graj') {?>
 <link rel="stylesheet" href="template/assets/chessboardjs-1.0.0/css/chessboard-1.0.0.css" />
 
 
@@ -71,8 +84,8 @@ if ($_prefixVariable2 == 'Graj') {?>
 <?php } else {
 ob_start();
 echo $_smarty_tpl->tpl_vars['title']->value;
-$_prefixVariable3=ob_get_clean();
-if ($_prefixVariable3 == 'Rejestruj sie') {?>
+$_prefixVariable4=ob_get_clean();
+if ($_prefixVariable4 == 'Rejestruj sie') {?>
 
 <?php $_smarty_tpl->_subTemplateRender('cms_template:c_register', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -81,8 +94,8 @@ if ($_prefixVariable3 == 'Rejestruj sie') {?>
 <?php } else {
 ob_start();
 echo $_smarty_tpl->tpl_vars['title']->value;
-$_prefixVariable4=ob_get_clean();
-if ($_prefixVariable4 == 'Logowanie') {
+$_prefixVariable5=ob_get_clean();
+if ($_prefixVariable5 == 'Logowanie') {
 $_smarty_tpl->_subTemplateRender('cms_template:c_login', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  
@@ -90,8 +103,8 @@ $_smarty_tpl->_subTemplateRender('cms_template:c_login', $_smarty_tpl->cache_id,
 <?php } else {
 ob_start();
 echo $_smarty_tpl->tpl_vars['title']->value;
-$_prefixVariable5=ob_get_clean();
-if ($_prefixVariable5 == 'Ranking graczy') {
+$_prefixVariable6=ob_get_clean();
+if ($_prefixVariable6 == 'Ranking graczy') {
 $_smarty_tpl->_subTemplateRender('cms_template:c_leaderboard', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  

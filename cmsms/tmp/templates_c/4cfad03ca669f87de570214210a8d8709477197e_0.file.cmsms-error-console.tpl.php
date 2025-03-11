@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.31, created on 2025-03-10 00:07:36
+/* Smarty version 3.1.31, created on 2025-03-11 10:33:18
   from "C:\xampp\htdocs\AplikacjeSieciowe\cmsms\lib\assets\templates\cmsms-error-console.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_67ce1f38df3886_96486496',
+  'unifunc' => 'content_67d0035e8acee3_31510873',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67ce1f38df3886_96486496 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67d0035e8acee3_31510873 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_function_root_url')) require_once 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\cmsms\\lib\\plugins\\function.root_url.php';
 ?>
 <!doctype html>
