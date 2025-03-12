@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2025-03-11 10:52:07
+/* Smarty version 3.1.31, created on 2025-03-11 14:56:03
   from "cms_template:c_heading" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_67d007c7555027_26863214',
+  'unifunc' => 'content_67d040f3559383_08357738',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '64d6320b72307398e066ff74584a3682053d66e4' => 
     array (
       0 => 'cms_template:c_heading',
-      1 => '1741686725',
+      1 => '1741701272',
       2 => 'cms_template',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'cms_template:c_leaderboard' => 1,
   ),
 ),false)) {
-function content_67d007c7555027_26863214 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67d040f3559383_08357738 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_function_title')) require_once 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\cmsms\\lib\\plugins\\function.title.php';
 ?>
 <div id="main-wrapper">
@@ -38,7 +38,7 @@ $_smarty_tpl->_assignInScope('title', $_prefixVariable1);
 echo $_smarty_tpl->tpl_vars['title']->value;
 $_prefixVariable2=ob_get_clean();
 if ($_prefixVariable2 == 'Wiadomości') {
-echo News::function_plugin(array('number'=>"3",'summarytemplate'=>"c_summary"),$_smarty_tpl);?>
+echo News::function_plugin(array('number'=>"3",'summarytemplate'=>"c_summary",'detailpage'=>"szczegóły-aktualności"),$_smarty_tpl);?>
 
 <?php }?>
  

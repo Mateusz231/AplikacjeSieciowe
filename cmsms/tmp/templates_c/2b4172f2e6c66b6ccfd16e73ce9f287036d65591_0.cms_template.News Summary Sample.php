@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2025-03-10 10:25:39
+/* Smarty version 3.1.31, created on 2025-03-11 13:19:58
   from "cms_template:News Summary Sample" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_67ceb013e2b499_23682822',
+  'unifunc' => 'content_67d02a6eb0c734_36125240',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2b4172f2e6c66b6ccfd16e73ce9f287036d65591' => 
     array (
       0 => 'cms_template:News Summary Sample',
-      1 => '1741426166',
+      1 => '1741686464',
       2 => 'cms_template',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67ceb013e2b499_23682822 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67d02a6eb0c734_36125240 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_function_repeat')) require_once 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\cmsms\\lib\\plugins\\function.repeat.php';
 if (!is_callable('smarty_modifier_cms_date_format')) require_once 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\cmsms\\lib\\plugins\\modifier.cms_date_format.php';
 if (!is_callable('smarty_modifier_cms_escape')) require_once 'C:\\xampp\\htdocs\\AplikacjeSieciowe\\cmsms\\lib\\plugins\\modifier.cms_escape.php';
